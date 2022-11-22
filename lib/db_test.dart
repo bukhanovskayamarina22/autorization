@@ -1,13 +1,7 @@
 import 'package:sqflite_common/sqlite_api.dart';
-<<<<<<< Updated upstream
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';                           
 
 void main() async {
-=======
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
-
-Future createDatabase() async {
->>>>>>> Stashed changes
   // Init ffi loader if needed.
   sqfliteFfiInit();
 
@@ -22,7 +16,6 @@ Future createDatabase() async {
   ''');
   await db.insert('Users', <String, Object?>{'email': 'example1@gmail.com', 'password': 'password1'});
   await db.insert('Users', <String, Object?>{'email': 'example2@gmail.com', 'password': 'password2'});
-<<<<<<< Updated upstream
   print("query");
   var result = await db.query('Users');
   print(result);
@@ -130,27 +123,3 @@ Future createDatabase() async {
 // }
 
 
-=======
-
-  var result = await db.query('Users');
-
-  var user1 = await db.rawQuery('SELECT * FROM Users WHERE email=?', ['example1@gmail.com']);
-
-  var deletedUser = await db.rawDelete('DELETE FROM Users WHERE email=?', ['example1@gmail.com']);
-
-  var changePassword = await db.rawUpdate('UPDATE Users SET password = ? WHERE email = ?',
-  ['password3', 'example2@gmail.com']);
-
-  // var funcTest = await addNewUserIntoTable(database: db, tableName: 'Users', email: 'example1@gmail.com', password: 'password1');
-
-  await db.close();
-}
-
-//adds new user into table, returns id of the last inserted row. 
-
-
-//gets row by email
-Object? getUserByEmail ({required Database database, required String tableName, required String email}) {
-  return database.rawQuery('SELECT * FROM $tableName WHERE email=?', ['$email']);
-} 
->>>>>>> Stashed changes

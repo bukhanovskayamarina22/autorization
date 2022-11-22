@@ -3,11 +3,7 @@ import 'package:sqflite_common/sqlite_api.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:autorization/custom_icons_icons.dart';
-import 'db_test.dart';
-import 'package:sqflite_common/sqlite_api.dart';
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-import 'db_test.dart';
 
 
 
@@ -17,17 +13,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const appTitle = 'Form Validation Demo';
-    sqfliteFfiInit();
-
-    var databaseFactory = databaseFactoryFfi;
-    var db = databaseFactory.openDatabase(inMemoryDatabasePath);
-    db.execute('''
-    CREATE TABLE Users (
-        id INTEGER PRIMARY KEY,
-        email TEXT,
-        password TEXT
-    )
-    ''');
 
     return MaterialApp(
       home: Scaffold(
@@ -175,14 +160,9 @@ class SubmitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-<<<<<<< Updated upstream
       onPressed: () async {
         var user = User(email: emailController.text, password: passwordController.text);
-=======
-      onPressed: () {
-        var user = User(email: UsernameField, password: PasswordField);
-        user.addNewUserIntoTable(database: db, tableName: Users, email: user.email, password: user.password);
->>>>>>> Stashed changes
+
         // Validate returns true if the form is valid, or false otherwise.
         if (_formKey.currentState!.validate()) {
           // If the form is valid, display a snackbar. In the real world,
@@ -265,7 +245,6 @@ class User {
   var email;
   var password;
   User({required email, required password}) {
-<<<<<<< Updated upstream
     this.email = email;
     this.password = password;
   }
@@ -273,15 +252,7 @@ class User {
   // Future<int> addNewUserIntoTable({required database, required String tableName, required String email, required String password}) {
   //   var  database.insert(tableName, <String, String>{'email': '$email', 'password': '$password'});
   // }
-=======
-    email = this.email;
-    password = this.password;
-  }
 
-  Future<int> addNewUserIntoTable({required Database database, required String tableName, required String email, required     String password}) {
-  return database.insert(tableName, <String, String>{'email': '$email', 'password': '$password'});
-}
->>>>>>> Stashed changes
 }
 
 
