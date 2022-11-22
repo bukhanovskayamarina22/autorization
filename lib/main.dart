@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
         body: const Center(
           child: CustomForm(),
         ),
+        floatingActionButton: const Settings(),
       ),
     );
   }
