@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:autorization/custom_icons_icons.dart';
+import 'db_test.dart';
+import 'package:sqflite_common/sqlite_api.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -155,6 +158,8 @@ class SubmitButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
+        var user = User(email: UsernameField, password: PasswordField);
+        user.addNewUserIntoTable(database: db, tableName: Users, email: user.email, password: user.password);
         // Validate returns true if the form is valid, or false otherwise.
         if (_formKey.currentState!.validate()) {
           // If the form is valid, display a snackbar. In the real world,
@@ -226,3 +231,19 @@ class UsernameField extends StatelessWidget {
     );
   }
 }
+
+
+class User {
+  var email;
+  var password;
+  User({required email, required password}) {
+    email = this.email;
+    password = this.password;
+  }
+
+  Future<int> addNewUserIntoTable({required Database database, required String tableName, required String email, required     String password}) {
+  return database.insert(tableName, <String, String>{'email': '$email', 'password': '$password'});
+}
+}
+
+
