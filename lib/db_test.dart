@@ -17,18 +17,17 @@ Future createDatabase() async {
   await db.insert('Users', <String, Object?>{'email': 'example1@gmail.com', 'password': 'password1'});
   await db.insert('Users', <String, Object?>{'email': 'example2@gmail.com', 'password': 'password2'});
 
-  var result = await db.query('Users');
+  // var result = await db.query('Users');
 
-  var user1 = await db.rawQuery('SELECT * FROM Users WHERE email=?', ['example1@gmail.com']);
+  // var user1 = await db.rawQuery('SELECT * FROM Users WHERE email=?', ['example1@gmail.com']);
 
-  var deletedUser = await db.rawDelete('DELETE FROM Users WHERE email=?', ['example1@gmail.com']);
+  // var deletedUser = await db.rawDelete('DELETE FROM Users WHERE email=?', ['example1@gmail.com']);
 
-  var changePassword = await db.rawUpdate('UPDATE Users SET password = ? WHERE email = ?',
-  ['password3', 'example2@gmail.com']);
+  // var changePassword = await db.rawUpdate('UPDATE Users SET password = ? WHERE email = ?',
+  // ['password3', 'example2@gmail.com']);
 
   // var funcTest = await addNewUserIntoTable(database: db, tableName: 'Users', email: 'example1@gmail.com', password: 'password1');
-
-  await db.close();
+  return db;
 }
 
 //adds new user into table, returns id of the last inserted row. 
@@ -38,3 +37,4 @@ Future createDatabase() async {
 Object? getUserByEmail ({required Database database, required String tableName, required String email}) {
   return database.rawQuery('SELECT * FROM $tableName WHERE email=?', ['$email']);
 } 
+
