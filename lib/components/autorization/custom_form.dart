@@ -1,6 +1,6 @@
-import 'package:autorization/pages/autorization/password_field.dart';
-import 'package:autorization/pages/autorization/submit_button.dart';
-import 'package:autorization/pages/autorization/username_field.dart';
+import 'package:autorization/components/autorization/password_field.dart';
+import 'package:autorization/components/autorization/submit_button.dart';
+import 'package:autorization/components/autorization/username_field.dart';
 import 'package:flutter/material.dart';
 
 import 'apple_auth.dart';

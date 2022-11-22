@@ -1,7 +1,7 @@
 import 'package:autorization/src/user.dart';
 import 'package:flutter/material.dart';
 import '../../constants/controllers.dart';
-import '../../1try/home_page.dart';
+import '../../pages/home_page.dart';
 
 class SubmitButton extends StatelessWidget {
   const SubmitButton({

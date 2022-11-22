@@ -1,11 +1,11 @@
-import 'package:autorization/pages/settings/setting_button.dart';
+import 'package:autorization/components/settings/setting_button.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite_common/sqlite_api.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-import 'pages/autorization/custom_form.dart';
-import '1try/home_page.dart';
-import '1try/login_page.dart';
+import 'components/autorization/custom_form.dart';
+import 'pages/home_page.dart';
+import 'pages/login_page.dart';
 
 void main() => runApp(MyApp());
 

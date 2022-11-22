@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../pages/autorization/username_field.dart';
-import '../pages/autorization/password_field.dart';
-import '../pages/autorization/submit_button.dart';
+import '../components/autorization/username_field.dart';
+import '../components/autorization/password_field.dart';
+import '../components/autorization/submit_button.dart';
 
 class LoginPage extends StatefulWidget {
   static String tag = 'login-page';
