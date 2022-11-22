@@ -78,21 +78,13 @@ class MyCustomFormState extends State<MyCustomForm> {
           constraints: const BoxConstraints.tightFor(width: 300),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 100),
-            ),
+            MyPadding(100.0),
             UsernameField(),
-            const Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-            ),
+            MyPadding(10.0),
             PasswordField(),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
-            ),
+            MyPadding(10.0),
             SubmitButton(formKey: _formKey),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 50),
-            ),
+            MyPadding(50.0),
             Column(
               // ignore: prefer_const_literals_to_create_immutables
               children: [
@@ -110,6 +102,12 @@ class MyCustomFormState extends State<MyCustomForm> {
           ]),
         ),
       ),
+    );
+  }
+
+  Padding MyPadding(double verticalPadding) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: verticalPadding),
     );
   }
 }
