@@ -1,27 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:autorization/custom_icons_icons.dart';
-import 'db_test.dart';
 import 'package:sqflite_common/sqlite_api.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-var db = () async {
-  // Init ffi loader if needed.
-  sqfliteFfiInit();
+import 'package:autorization/custom_icons_icons.dart';
 
-  var databaseFactory = databaseFactoryFfi;
-  var db = await databaseFactory.openDatabase(inMemoryDatabasePath);
-  await db.execute('''
-  CREATE TABLE Users (
-      id INTEGER PRIMARY KEY,
-      email TEXT,
-      password TEXT
-  )
-  ''');
-  await db.insert('Users', <String, Object?>{'email': 'example1@gmail.com', 'password': 'password1'});
-  await db.insert('Users', <String, Object?>{'email': 'example2@gmail.com', 'password': 'password2'});
+import 'db_test.dart';
 
-  return db;
-};
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -186,7 +171,6 @@ class SubmitButton extends StatelessWidget {
             const SnackBar(content: Text("Processing Data")),
           );
         }
-        print(db);
         print('a');
       },
       // ignore: prefer_const_constructors
