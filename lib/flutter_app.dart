@@ -4,9 +4,28 @@ import 'db_test.dart';
 import 'package:sqflite_common/sqlite_api.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
+var db = () async {
+  // Init ffi loader if needed.
+  sqfliteFfiInit();
+
+  var databaseFactory = databaseFactoryFfi;
+  var db = await databaseFactory.openDatabase(inMemoryDatabasePath);
+  await db.execute('''
+  CREATE TABLE Users (
+      id INTEGER PRIMARY KEY,
+      email TEXT,
+      password TEXT
+  )
+  ''');
+  await db.insert('Users', <String, Object?>{'email': 'example1@gmail.com', 'password': 'password1'});
+  await db.insert('Users', <String, Object?>{'email': 'example2@gmail.com', 'password': 'password2'});
+
+  return db;
+};
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     const appTitle = 'Form Validation Demo';
@@ -157,17 +176,18 @@ class SubmitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
-        var user = User(email: UsernameField, password: PasswordField);
-        user.addNewUserIntoTable(database: db, tableName: Users, email: user.email, password: user.password);
+      onPressed: () async {
+        var user = User(email: emailController.text, password: passwordController.text);
         // Validate returns true if the form is valid, or false otherwise.
         if (_formKey.currentState!.validate()) {
           // If the form is valid, display a snackbar. In the real world,
           // you'd often call a server or save the information in a database.
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Processing Data')),
+            const SnackBar(content: Text("Processing Data")),
           );
         }
+        print(db);
+        print('a');
       },
       // ignore: prefer_const_constructors
       child: Center(
@@ -177,15 +197,18 @@ class SubmitButton extends StatelessWidget {
     );
   }
 }
-
+final emailController = TextEditingController();
+final passwordController = TextEditingController();
 class PasswordField extends StatelessWidget {
   const PasswordField({
     Key? key,
   }) : super(key: key);
+  
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: passwordController,
       decoration: const InputDecoration(
         border: OutlineInputBorder(),
         label: Text("password"),
@@ -199,7 +222,6 @@ class PasswordField extends StatelessWidget {
         if (value.length < 7) {
           return 'Password should be at least 8 symbols';
         }
-        return null;
       },
     );
   }
@@ -213,6 +235,7 @@ class UsernameField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: emailController,
       decoration: const InputDecoration(
         border: OutlineInputBorder(),
         label: Text("username"),
@@ -228,6 +251,7 @@ class UsernameField extends StatelessWidget {
         }
         return null;
       },
+
     );
   }
 }
@@ -237,13 +261,13 @@ class User {
   var email;
   var password;
   User({required email, required password}) {
-    email = this.email;
-    password = this.password;
+    this.email = email;
+    this.password = password;
   }
 
-  Future<int> addNewUserIntoTable({required Database database, required String tableName, required String email, required     String password}) {
-  return database.insert(tableName, <String, String>{'email': '$email', 'password': '$password'});
-}
+  // Future<int> addNewUserIntoTable({required database, required String tableName, required String email, required String password}) {
+  //   var  database.insert(tableName, <String, String>{'email': '$email', 'password': '$password'});
+  // }
 }
 
 
