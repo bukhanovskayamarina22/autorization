@@ -10,10 +10,10 @@ class UsernameField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: emailController,
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         border: OutlineInputBorder(),
-        label: Text("username"),
-        hintText: "email",
+        label: Text(language_now.username),
+        hintText: language_now.email,
       ),
       // The validator receives the text that the user has entered.
       validator: (value) {

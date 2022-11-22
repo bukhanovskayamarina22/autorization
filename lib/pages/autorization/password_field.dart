@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:autorization/constants/controllers.dart';
 
-class PasswordField extends StatelessWidget {
-  const PasswordField({
-    Key? key,
-  }) : super(key: key);
+class PasswordField extends StatefulWidget {
+  const PasswordField({super.key});
 
+  @override
+  PasswordFieldState createState() {
+    return PasswordFieldState();
+  }
+}
+
+class PasswordFieldState extends State<PasswordField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: passwordController,
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         border: OutlineInputBorder(),
-        label: Text("password"),
-        hintText: "at least 8 symbols",
+        label: Text(language_now.password),
+        hintText: language_now.password_help,
       ),
       // The validator receives the text that the user has entered.
       validator: (value) {

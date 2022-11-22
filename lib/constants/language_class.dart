@@ -1,23 +1,27 @@
-class language_class {
+class LanguageClass {
   String username = 'username';
   String email = "email";
   String password = "password";
   String password_help = "at least 8 symbols";
   String submit = "Submit";
   String language = "Language";
+  String settings = "Setting";
 
   int number_language = 1;
 
-  void change_language(int x) {
+  void change_language(x) {
     switch (x) {
       case 0:
         language_rus();
+        print(email);
         break;
       case 1:
         language_eng();
+        print(username);
         break;
       case 2:
         language_che();
+        print(password_help);
         break;
     }
   }
@@ -29,6 +33,7 @@ class language_class {
     password_help = "не менее 8 символов";
     submit = "Отправить";
     language = "Язык";
+    settings = "Настройки";
   }
 
   void language_eng() {
@@ -38,6 +43,7 @@ class language_class {
     password_help = "at least 8 symbols";
     submit = "Submit";
     language = "Language";
+    settings = "Setting";
   }
 
   void language_che() {
@@ -47,5 +53,6 @@ class language_class {
     password_help = "alespoň 8 symbolů";
     submit = "Odeslat";
     language = "Jazyk";
+    settings = "Настройки";
   }
 }

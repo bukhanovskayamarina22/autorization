@@ -31,7 +31,7 @@ class SubmitButton extends StatelessWidget {
       // ignore: prefer_const_constructors
       child: Center(
         widthFactor: 8,
-        child: const Text('Submit'),
+        child: Text(language_now.submit),
       ),
     );
   }
