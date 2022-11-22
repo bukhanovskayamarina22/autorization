@@ -40,12 +40,20 @@ dependencies:
   flutterfire: ^0.0.1
   google_sign_in: ^5.4.2
   http: ^0.13.5
+<<<<<<< Updated upstream
   sqflite_common: ^2.4.0+2
   sqflite_common_ffi: ^2.2.0+1
+=======
+  sqflite: ^2.2.0+3
+  widgets: ^1.4.5
+  path: ^1.8.2
+  
+>>>>>>> Stashed changes
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  sqflite_common_ffi: ^2.2.0+1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
