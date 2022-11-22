@@ -273,11 +273,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.0"
-<<<<<<< Updated upstream
-  sqflite_common:
-    dependency: "direct main"
-    description:
-=======
   sqflite:
     dependency: "direct main"
     description:
@@ -286,19 +281,14 @@ packages:
     source: hosted
     version: "2.2.0+3"
   sqflite_common:
-    dependency: transitive
+    dependency: "direct main"
     description:
->>>>>>> Stashed changes
       name: sqflite_common
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.4.0+2"
   sqflite_common_ffi:
-<<<<<<< Updated upstream
-    dependency: "direct main"
-=======
     dependency: "direct dev"
->>>>>>> Stashed changes
     description:
       name: sqflite_common_ffi
       url: "https://pub.dartlang.org"
