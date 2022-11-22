@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import '../../src/custom_icons.dart';
 import 'language.dart';
 
@@ -40,4 +40,4 @@ class SettingMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(width: 100, height: 120, child: Language());
   }
-}
+}*/

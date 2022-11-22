@@ -1,4 +1,4 @@
-import 'package:autorization/pages/settings/setting_button.dart';
+import 'package:autorization/pages/autorization/settings_button.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite_common/sqlite_api.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         body: const Center(
           child: CustomForm(),
         ),
-        floatingActionButton: const Settings(),
+        floatingActionButton: const SettingsButton(),
       ),
     );
   }
