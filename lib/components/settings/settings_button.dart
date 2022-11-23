@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 import '../../src/custom_icons.dart';
-import 'settings_page.dart';
+import '../../pages/settings_page.dart';
 
 class SettingsButton extends StatefulWidget {
   const SettingsButton({super.key});

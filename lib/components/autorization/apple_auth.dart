@@ -5,7 +5,6 @@ class AppleAuth extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,4 +17,3 @@ class AppleAuth extends StatelessWidget {
     );
   }
 }
-
