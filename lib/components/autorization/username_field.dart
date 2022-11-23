@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+import 'package:autorization/constants/controllers.dart';
+
+class UsernameField extends StatelessWidget {
+  const UsernameField({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+
+
+    return Padding(
+      padding: EdgeInsets.all(8.0),
+      child: TextFormField(
+        controller: emailController,
+        decoration: const InputDecoration(
+          border: OutlineInputBorder(),
+          label: Text("username"),
+          hintText: "email",
+        ),
+        // The validator receives the text that the user has entered.
+        validator: (value) {
+          if (value == null ||
+              value.isEmpty ||
+              !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                  .hasMatch(value)) {
+            return 'Enter valid email';
+          }
+          return null;
+        },
+      ),
+    );
+  }
+}
