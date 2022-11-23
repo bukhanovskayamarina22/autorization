@@ -1,7 +1,10 @@
+import 'package:autorization/components/autorization/apple_auth.dart';
+import 'package:autorization/components/autorization/google_auth.dart';
 import 'package:flutter/material.dart';
 import '../components/autorization/username_field.dart';
 import '../components/autorization/password_field.dart';
 import '../components/autorization/submit_button.dart';
+import '../components/settings/setting_button.dart';
 
 class LoginPage extends StatefulWidget {
   static String tag = 'login-page';
@@ -20,20 +23,35 @@ class _LoginPageState extends State<LoginPage> {
 
     final loginButton = SubmitButton(formKey: _formKey,);
 
+    final googleAuth = GoogleAuth();
+
+    final appleAuth = AppleAuth();
+
+    final settings = Settings();
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: ListView(
-          shrinkWrap: true,
-          padding: EdgeInsets.only(left: 24.0, right: 24.0),
-          children: <Widget>[
-            email,
-            SizedBox(height: 8.0),
-            password,
-            SizedBox(height: 24.0),
-            loginButton,
-          ],
+      child: SizedBox(
+        width: 400.0,
+        height: 600.0,
+        child: Center(
+          child: ListView(
+            shrinkWrap: true,
+            padding: EdgeInsets.only(left: 24.0, right: 24.0),
+            children: <Widget>[
+              settings,
+              email,
+              SizedBox(height: 8.0),
+              password,
+              SizedBox(height: 24.0),
+              loginButton,
+              googleAuth,
+              appleAuth,     
+            ],
+          ),
         ),
+      ),
       ),
     );
   }

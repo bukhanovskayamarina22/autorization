@@ -5,12 +5,17 @@ class AppleAuth extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      color: Colors.transparent,
-      child: OutlinedButton(onPressed: () {}, child: const Text('Apple ID')),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 16.0),
+      child: Container(
+        width: double.infinity,
+        color: Colors.transparent,
+        child: OutlinedButton(onPressed: () {}, child: const Text('Apple ID')),
+      ),
     );
   }
 }
+
