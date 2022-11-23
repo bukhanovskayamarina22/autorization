@@ -6,6 +6,7 @@ class LanguageClass {
   String submit = "Submit";
   String language = "Language";
   String settings = "Setting";
+  String confirm = "Confirm";
 
   int number_language = 1;
 
@@ -23,6 +24,8 @@ class LanguageClass {
         language_che();
         print(password_help);
         break;
+      default:
+        break;
     }
   }
 
@@ -34,6 +37,7 @@ class LanguageClass {
     submit = "Отправить";
     language = "Язык";
     settings = "Настройки";
+    confirm = "Принять";
   }
 
   void language_eng() {
@@ -44,6 +48,7 @@ class LanguageClass {
     submit = "Submit";
     language = "Language";
     settings = "Setting";
+    confirm = "Confirm";
   }
 
   void language_che() {
@@ -53,6 +58,7 @@ class LanguageClass {
     password_help = "alespoň 8 symbolů";
     submit = "Odeslat";
     language = "Jazyk";
-    settings = "Настройки";
+    settings = "Nastavení";
+    confirm = "Confirm";
   }
 }

@@ -5,6 +5,7 @@ import 'package:autorization/pages/settings/settings_page.dart';
 
 class SettingsButton extends StatefulWidget {
   const SettingsButton({super.key});
+
   @override
   State<SettingsButton> createState() => _SettingsButtonState();
 }

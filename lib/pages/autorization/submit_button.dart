@@ -2,7 +2,7 @@ import 'package:autorization/src/user.dart';
 import 'package:flutter/material.dart';
 import '../../constants/controllers.dart';
 
-class SubmitButton extends StatelessWidget {
+class SubmitButton extends StatefulWidget {
   const SubmitButton({
     Key? key,
     required GlobalKey<FormState> formKey,
@@ -12,6 +12,11 @@ class SubmitButton extends StatelessWidget {
   final GlobalKey<FormState> _formKey;
 
   @override
+  State<SubmitButton> createState() => _SubmitButtonState();
+}
+
+class _SubmitButtonState extends State<SubmitButton> {
+  @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () async {
@@ -19,7 +24,7 @@ class SubmitButton extends StatelessWidget {
             email: emailController.text, password: passwordController.text);
 
         // Validate returns true if the form is valid, or false otherwise.
-        if (_formKey.currentState!.validate()) {
+        if (widget._formKey.currentState!.validate()) {
           // If the form is valid, display a snackbar. In the real world,
           // you'd often call a server or save the information in a database.
           ScaffoldMessenger.of(context).showSnackBar(

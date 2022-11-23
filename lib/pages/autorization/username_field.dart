@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:autorization/constants/controllers.dart';
 
-class UsernameField extends StatelessWidget {
+class UsernameField extends StatefulWidget {
   const UsernameField({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<UsernameField> createState() => _UsernameFieldState();
+}
+
+class _UsernameFieldState extends State<UsernameField> {
+  @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: emailController,
       decoration: InputDecoration(
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
         label: Text(language_now.username),
         hintText: language_now.email,
       ),
