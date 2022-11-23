@@ -3,7 +3,7 @@ import 'package:autorization/constants/language_class.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite_common/sqlite_api.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'components/autorization/custom_form.dart';
 import 'pages/home_page.dart';
 import 'pages/login_page.dart';
@@ -29,6 +29,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Kodeversitas',
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(
         primarySwatch: Colors.lightBlue,
         fontFamily: 'Nunito',
