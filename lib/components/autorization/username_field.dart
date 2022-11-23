@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:autorization/constants/controllers.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UsernameField extends StatefulWidget {
   const UsernameField({
@@ -19,8 +20,8 @@ class _UsernameFieldState extends State<UsernameField> {
         controller: emailController,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
-          label: Text(language_now.username),
-          hintText: language_now.email,
+          label: Text(AppLocalizations.of(context)!.pageLoginUsername),
+          hintText: AppLocalizations.of(context)!.pageLoginUsernameHelp,
         ),
         // The validator receives the text that the user has entered.
         validator: (value) {
@@ -28,7 +29,7 @@ class _UsernameFieldState extends State<UsernameField> {
               value.isEmpty ||
               !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                   .hasMatch(value)) {
-            return 'Enter valid email';
+            return AppLocalizations.of(context)!.pageLoginUsernameError;
           }
           return null;
         },

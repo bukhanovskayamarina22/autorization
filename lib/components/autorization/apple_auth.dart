@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppleAuth extends StatefulWidget {
   const AppleAuth({
@@ -17,7 +18,9 @@ class _AppleAuthState extends State<AppleAuth> {
       child: Container(
         width: double.infinity,
         color: Colors.transparent,
-        child: OutlinedButton(onPressed: () {}, child: const Text('Apple ID')),
+        child: OutlinedButton(
+            onPressed: () {},
+            child: Text(AppLocalizations.of(context)!.pageLoginButtonApple)),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GoogleAuth extends StatefulWidget {
   const GoogleAuth({
@@ -17,7 +18,9 @@ class _GoogleAuthState extends State<GoogleAuth> {
       child: Container(
         width: double.infinity,
         color: Colors.transparent,
-        child: OutlinedButton(onPressed: () {}, child: const Text('Google')),
+        child: OutlinedButton(
+            onPressed: () {},
+            child: Text(AppLocalizations.of(context)!.pageLoginButtonGoogle)),
       ),
     );
   }

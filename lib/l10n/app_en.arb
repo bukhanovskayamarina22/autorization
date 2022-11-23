@@ -1,0 +1,28 @@
+{
+  "pageLoginUsername" : "Your username",
+  "@pageLoginUsername" : {},
+  
+  "pageLoginUsernameHelp" : "Email",
+  "@pageLoginUsernameHelp": {},
+
+  "pageLoginUsernameError": "Enter valid email",
+  "@pageLoginUsernameError": {},
+
+  "pageLoginPassword" : "Your password",
+  "@pageLoginPassword" : {},
+
+  "pageLoginPasswordHelp": "At least 8 symbols",
+  "@pageLoginPasswordHelp": {},
+
+  "pageLoginPasswordError": "Password should be at least 8 symbols",
+  "@pageLoginPasswordError": {},
+
+  "pageLoginButtonSubmit": "Submit",
+  "@pageLoginButtonSubmit": {},
+
+  "pageLoginButtonGoogle": "Login with Google",
+  "@pageLoginButtonGoogle": {},
+
+  "pageLoginButtonApple": "Login with AppleID",
+  "@pageLoginButtonApple": {}
+}

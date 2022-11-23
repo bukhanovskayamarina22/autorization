@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:autorization/constants/controllers.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PasswordField extends StatefulWidget {
   const PasswordField({
@@ -19,8 +20,8 @@ class _PasswordFieldState extends State<PasswordField> {
         controller: passwordController,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
-          label: Text(language_now.password),
-          hintText: language_now.password_help,
+          label: Text(AppLocalizations.of(context)!.pageLoginPassword),
+          hintText: AppLocalizations.of(context)!.pageLoginPasswordHelp,
         ),
         // The validator receives the text that the user has entered.
         validator: (value) {
@@ -28,7 +29,7 @@ class _PasswordFieldState extends State<PasswordField> {
             return 'Please enter some text';
           }
           if (value.length < 7) {
-            return 'Password should be at least 8 symbols';
+            return AppLocalizations.of(context)!.pageLoginPasswordError;
           }
         },
       ),

@@ -2,6 +2,7 @@ import 'package:autorization/src/user.dart';
 import 'package:flutter/material.dart';
 import '../../constants/controllers.dart';
 import '../../pages/home_page.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SubmitButton extends StatefulWidget {
   const SubmitButton({
@@ -30,7 +31,7 @@ class _SubmitButtonState extends State<SubmitButton> {
         },
         child: Center(
           widthFactor: 8,
-          child: Text(language_now.submit),
+          child: Text(AppLocalizations.of(context)!.pageLoginButtonSubmit),
         ),
       ),
     );
