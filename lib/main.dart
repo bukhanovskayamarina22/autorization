@@ -1,4 +1,5 @@
 import 'package:autorization/components/settings/setting_button.dart';
+import 'package:autorization/components/settings/settings_button.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite_common/sqlite_api.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -28,6 +29,30 @@ class MyApp extends StatelessWidget {
         home: LoginPage(),
         routes: routes,
       );
+  }
+}
+
+// class MyApp extends StatefulWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   State<MyApp> createState() => _MyAppState();
+// }
+
+// class _MyAppState extends State<MyApp> {
+//   @override
+//   Widget build(BuildContext context) {
+//     const appTitle = 'Form Validation Demo';
+//       return MaterialApp(
+//         title: 'Kodeversitas',
+//         debugShowCheckedModeBanner: false,
+//         theme: ThemeData(
+//           primarySwatch: Colors.lightBlue,
+//           fontFamily: 'Nunito',
+//         ),
+//         home: LoginPage(),
+//         routes: routes,
+//       );
 
     // return MaterialApp(
     //   home: Scaffold(
@@ -41,5 +66,16 @@ class MyApp extends StatelessWidget {
     //   ),
 
     // );
-  }
-}
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: const Text(appTitle),
+//         ),
+//         body: const Center(
+//           child: CustomForm(),
+//         ),
+//         floatingActionButton: const SettingsButton(),
+//       ),
+//     );
+//   }
+// }
