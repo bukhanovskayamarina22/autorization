@@ -1,4 +1,5 @@
 class LanguageClass {
+  static const String defaultLanguage = 'en';
   String username = 'username';
   String email = "email";
   String password = "password";
