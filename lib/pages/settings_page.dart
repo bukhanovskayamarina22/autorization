@@ -1,5 +1,6 @@
 import 'package:autorization/components/settings/confirm_button.dart';
 import 'package:autorization/constants/controllers.dart';
+import 'package:autorization/main.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -12,8 +13,9 @@ class SettingsPage extends StatefulWidget {
 }
 
 class SettingsPageState extends State<SettingsPage> {
-  final List<String> language = ["Rus", "Eng", "Сze"];
-  int selectedIndex = language_now.number_language;
+  final List<String> language_for_locale = ["ru", "en", "cs"];
+  final List<String> language = ["Rus", "Eng", "Cze"];
+  int selectedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +72,9 @@ class SettingsPageState extends State<SettingsPage> {
         setState(() {
           // устанавливаем индекс выделенного элемента
           language_now.number_language = index;
-          language_now.change_language(language_now.number_language);
-          print(language_now.confirm);
         });
+        MyApp.of(context)?.setLocale(
+            Locale.fromSubtags(languageCode: language_for_locale[index]));
       },
       child: Container(
         alignment: Alignment.center,

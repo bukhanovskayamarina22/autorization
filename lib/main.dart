@@ -12,7 +12,10 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
   @override
-  State<MyApp> createState() => _MyAppState();
+  _MyAppState createState() => _MyAppState();
+
+  static _MyAppState? of(BuildContext context) =>
+      context.findAncestorStateOfType<_MyAppState>();
 }
 
 class _MyAppState extends State<MyApp> {
@@ -20,7 +23,13 @@ class _MyAppState extends State<MyApp> {
     LoginPage.tag: (context) => LoginPage(),
     HomePage.tag: (context) => HomePage(),
   };
-  LanguageClass lang = language_now;
+  Locale _locale = Locale('en', '');
+
+  void setLocale(Locale value) {
+    setState(() {
+      _locale = value;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +40,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+      locale: _locale,
       theme: ThemeData(
         primarySwatch: Colors.lightBlue,
         fontFamily: 'Nunito',
