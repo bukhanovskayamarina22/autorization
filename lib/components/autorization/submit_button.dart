@@ -13,14 +13,13 @@ class SubmitButton extends StatelessWidget {
   final GlobalKey<FormState> _formKey;
 
   @override
-  Widget build(BuildContext context) { 
-
-
+  Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: ElevatedButton(
         onPressed: () async {
-          var user = User(email: emailController.text, password: passwordController.text);
+          var user = User(
+              email: emailController.text, password: passwordController.text);
           Navigator.of(context).pushNamed(HomePage.tag);
           // // Validate returns true if the form is valid, or false otherwise.
           if (_formKey.currentState!.validate()) {

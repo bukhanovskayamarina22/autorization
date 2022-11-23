@@ -8,12 +8,14 @@ class HomePage extends StatelessWidget {
     final text = Text(
       'Logged in',
       style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-      );
+    );
 
     return Scaffold(
-      body: Center(
-        child: text,
-      )
-    );
+        appBar: AppBar(
+          title: Text("Home Page"),
+        ),
+        body: Center(
+          child: text,
+        ));
   }
 }

@@ -1,7 +1,6 @@
+import 'package:autorization/components/settings/confirm_button.dart';
 import 'package:autorization/constants/controllers.dart';
-import 'package:autorization/src/custom_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:autorization/constants/language_class.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -84,27 +83,5 @@ class SettingsPageState extends State<SettingsPage> {
         child: Text(language[index], style: TextStyle(fontSize: 20)),
       ),
     );
-  }
-}
-
-class ConfirmButton extends StatefulWidget {
-  const ConfirmButton({super.key});
-  @override
-  State<ConfirmButton> createState() => _ConfirmButtonState();
-}
-
-class _ConfirmButtonState extends State<ConfirmButton> {
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        child: Align(
-          widthFactor: 1,
-          heightFactor: 1,
-          alignment: Alignment.bottomCenter,
-          child: Text(language_now.confirm),
-        ));
   }
 }
