@@ -1,5 +1,4 @@
-import 'package:autorization/components/settings/setting_button.dart';
-import 'package:autorization/components/settings/settings_button.dart';
+
 import 'package:flutter/material.dart';
 import 'package:sqflite_common/sqlite_api.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';

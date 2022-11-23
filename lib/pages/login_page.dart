@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../components/autorization/username_field.dart';
 import '../components/autorization/password_field.dart';
 import '../components/autorization/submit_button.dart';
-import '../components/settings/setting_button.dart';
+import '../components/settings/settings_button.dart';
 
 class LoginPage extends StatefulWidget {
   static String tag = 'login-page';
@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
 
     final appleAuth = AppleAuth();
 
-    final settings = Settings();
+    final settings = SettingsButton();
 
     return Scaffold(
       backgroundColor: Colors.white,

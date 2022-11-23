@@ -1,7 +1,7 @@
-import 'package:autorization/pages/settings/settings_page.dart';
+
 import 'package:flutter/material.dart';
 import '../../src/custom_icons.dart';
-import 'package:autorization/pages/settings/settings_page.dart';
+import 'settings_page.dart';
 
 class SettingsButton extends StatefulWidget {
   const SettingsButton({super.key});
