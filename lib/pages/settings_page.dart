@@ -1,3 +1,4 @@
+import 'package:autorization/components/settings/change_theme_button.dart';
 import 'package:autorization/components/settings/confirm_button.dart';
 import 'package:autorization/main.dart';
 import 'package:flutter/material.dart';
@@ -63,6 +64,7 @@ class SettingsPageState extends State<SettingsPage> {
                             selectionColor: Colors.blue,
                             style: const TextStyle(fontWeight: FontWeight.bold),
                           )))),
+                  Flexible(child: ChangeThemeButtonWidget())
                 ],
               )
             ])),
