@@ -24,5 +24,12 @@
   "@pageLoginButtonGoogle": {},
 
   "pageLoginButtonApple": "Login with AppleID",
-  "@pageLoginButtonApple": {}
+  "@pageLoginButtonApple": {},
+
+  "pageSettingsTitle": "Settings",
+  "@pageSettingsTitle": {},
+
+  "pageSettingsTextLanguage": "Language",
+  "@pageSettingsTextLanguage": {}
+
 }

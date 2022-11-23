@@ -15,5 +15,9 @@
   
   "pageLoginButtonGoogle": "Вход с аккаунтом Google",
   
-  "pageLoginButtonApple": "Вход с аккаунтом AppleID"
+  "pageLoginButtonApple": "Вход с аккаунтом AppleID",
+
+  "pageSettingsTitle": "Настройки",
+
+  "pageSettingsTextLanguage": "Язык"
 }

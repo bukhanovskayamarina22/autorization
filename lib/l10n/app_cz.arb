@@ -17,5 +17,9 @@
   
   "pageLoginButtonGoogle": "Přihlaste se pomocí účtu Google",
   
-  "pageLoginButtonApple": "Přihlaste se pomocí účtu AppleID"
+  "pageLoginButtonApple": "Přihlaste se pomocí účtu AppleID",
+
+  "pageSettingsTitle": "Settings",
+
+  "pageSettingsTextLanguage": "Language"
 }

@@ -19,7 +19,7 @@ class _ConfirmButtonState extends State<ConfirmButton> {
           widthFactor: 1,
           heightFactor: 1,
           alignment: Alignment.bottomCenter,
-          child: Text(language_now.confirm),
+          child: const Text("Confirm"),
         ));
   }
 }
