@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 
-class GoogleAuth extends StatelessWidget {
+class GoogleAuth extends StatefulWidget {
   const GoogleAuth({
     Key? key,
   }) : super(key: key);
 
-  
+  @override
+  State<GoogleAuth> createState() => _GoogleAuthState();
+}
 
+class _GoogleAuthState extends State<GoogleAuth> {
   @override
   Widget build(BuildContext context) {
-      return Padding(
-        padding: EdgeInsets.only(top: 70),
-        child: Container(
-          width: double.infinity,
-          color: Colors.transparent,
-          child: OutlinedButton(onPressed: () {}, child: const Text('Google')),
+    return Padding(
+      padding: EdgeInsets.only(top: 70),
+      child: Container(
+        width: double.infinity,
+        color: Colors.transparent,
+        child: OutlinedButton(onPressed: () {}, child: const Text('Google')),
       ),
     );
   }

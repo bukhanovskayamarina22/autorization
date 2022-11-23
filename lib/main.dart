@@ -1,3 +1,5 @@
+import 'package:autorization/constants/controllers.dart';
+import 'package:autorization/constants/language_class.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite_common/sqlite_api.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -8,14 +10,21 @@ import 'pages/login_page.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   final routes = <String, WidgetBuilder>{
     LoginPage.tag: (context) => LoginPage(),
     HomePage.tag: (context) => HomePage(),
   };
+  LanguageClass lang = language_now;
 
   @override
   Widget build(BuildContext context) {
+    print('build');
     const appTitle = 'Form Validation Demo';
     return MaterialApp(
       title: 'Kodeversitas',

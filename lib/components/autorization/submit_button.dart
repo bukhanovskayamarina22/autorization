@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../constants/controllers.dart';
 import '../../pages/home_page.dart';
 
-class SubmitButton extends StatelessWidget {
+class SubmitButton extends StatefulWidget {
   const SubmitButton({
     Key? key,
     required GlobalKey<FormState> formKey,
@@ -12,6 +12,11 @@ class SubmitButton extends StatelessWidget {
 
   final GlobalKey<FormState> _formKey;
 
+  @override
+  State<SubmitButton> createState() => _SubmitButtonState();
+}
+
+class _SubmitButtonState extends State<SubmitButton> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,10 +27,10 @@ class SubmitButton extends StatelessWidget {
               email: emailController.text, password: passwordController.text);
           Navigator.of(context).pushNamed(HomePage.tag);
           // // Validate returns true if the form is valid, or false otherwise.
-          },
+        },
         child: Center(
           widthFactor: 8,
-          child: const Text('Submit'),
+          child: Text(language_now.submit),
         ),
       ),
     );

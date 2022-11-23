@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:autorization/constants/controllers.dart';
 
-class UsernameField extends StatelessWidget {
+class UsernameField extends StatefulWidget {
   const UsernameField({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<UsernameField> createState() => _UsernameFieldState();
+}
+
+class _UsernameFieldState extends State<UsernameField> {
+  @override
   Widget build(BuildContext context) {
-
-
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: TextFormField(
         controller: emailController,
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
           border: OutlineInputBorder(),
-          label: Text("username"),
-          hintText: "email",
+          label: Text(language_now.username),
+          hintText: language_now.email,
         ),
         // The validator receives the text that the user has entered.
         validator: (value) {
