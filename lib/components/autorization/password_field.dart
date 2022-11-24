@@ -19,6 +19,9 @@ class _PasswordFieldState extends State<PasswordField> {
       child: TextFormField(
         controller: passwordController,
         decoration: InputDecoration(
+          labelStyle: TextStyle(
+            color: Theme.of(context).iconTheme.color,
+          ),
           border: OutlineInputBorder(),
           label: Text(AppLocalizations.of(context)!.pageLoginPassword),
           hintText: AppLocalizations.of(context)!.pageLoginPasswordHelp,

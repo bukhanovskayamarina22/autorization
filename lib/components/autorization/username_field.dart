@@ -19,6 +19,9 @@ class _UsernameFieldState extends State<UsernameField> {
       child: TextFormField(
         controller: emailController,
         decoration: InputDecoration(
+          labelStyle: TextStyle(
+            color: Theme.of(context).iconTheme.color,
+          ),
           border: OutlineInputBorder(),
           label: Text(AppLocalizations.of(context)!.pageLoginUsername),
           hintText: AppLocalizations.of(context)!.pageLoginUsernameHelp,

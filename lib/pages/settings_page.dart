@@ -1,3 +1,4 @@
+import 'package:autorization/components/settings/change_theme_button.dart';
 import 'package:autorization/components/settings/confirm_button.dart';
 import 'package:autorization/main.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +37,7 @@ class SettingsPageState extends State<SettingsPage> {
                 children: [
                   //Text language
                   TextLanguage(),
-                  //Buttons for language
+                  //Поменять на toggle_button
                   Flexible(
                       child: Container(
                           width: 400,
@@ -63,6 +64,7 @@ class SettingsPageState extends State<SettingsPage> {
                             selectionColor: Colors.blue,
                             style: const TextStyle(fontWeight: FontWeight.bold),
                           )))),
+                  Flexible(child: ChangeThemeButtonWidget())
                 ],
               )
             ])),
@@ -109,7 +111,7 @@ class TextLanguage extends StatelessWidget {
               child: Text(
             AppLocalizations.of(context)!.pageSettingsTextLanguage,
             textAlign: TextAlign.center,
-            selectionColor: Colors.blue,
+            selectionColor: Theme.of(context).iconTheme.color,
             style: const TextStyle(fontWeight: FontWeight.bold),
           ))),
     );

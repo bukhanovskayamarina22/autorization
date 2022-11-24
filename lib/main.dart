@@ -1,6 +1,7 @@
 import 'package:autorization/components/settings/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
 import 'pages/login_page.dart';
 
@@ -28,7 +29,27 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+      create: (context) => ThemeProvider(),
+      builder: (context, _) {
+        final themeProvider = Provider.of<ThemeProvider>(context);
+
+        return MaterialApp(
+          title: 'Kodeversitas',
+          debugShowCheckedModeBanner: false,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          locale: _locale,
+          themeMode: themeProvider.themeMode,
+          theme: MyThemes.lightTheme,
+          darkTheme: MyThemes.darkTheme,
+          home: LoginPage(),
+          routes: routes,
+        );
+      });
+}
+
+  /*) {
     print('build');
     const appTitle = 'Form Validation Demo';
     return MaterialApp(
@@ -48,7 +69,7 @@ class _MyAppState extends State<MyApp> {
       routes: routes,
     );
   }
-}
+}*/
 
 // class MyApp extends StatefulWidget {
 //   const MyApp({super.key});
