@@ -6,8 +6,10 @@ class User {
     this.password = password;
   }
 
-  // Future<int> addNewUserIntoTable({required database, required String tableName, required String email, required String password}) {
-  //   var  database.insert(tableName, <String, String>{'email': '$email', 'password': '$password'});
-  // }
 
+  Map<String, dynamic> toMap() => {'email': this.email, 'password': this.password};
+
+  @override
+  String toString() => 'email: ${this.email}, password: ${this.password}';
 }
+
