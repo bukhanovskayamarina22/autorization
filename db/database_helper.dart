@@ -1,10 +1,8 @@
-
 import 'dart:async';
 import 'dart:core';
 
 // import 'package:autorization/flutter_app.dart';
 import 'package:autorization/src/user.dart';
-import 'package:autorization/flutter_app.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -15,7 +13,7 @@ class DatabaseHelper {
 
   Future openDatabase() async {
     return await Hive.openBox<Map>('users');
-  }  
+  }
 
   Future openBox() async {
     return await Hive.box<Map>('users');
@@ -29,7 +27,7 @@ class DatabaseHelper {
   Future userExists({required Box box, required User user}) async {
     Map userMap = user.toMap();
     if (box.get('${user.email}') != null) return '${user.password}';
-    return "no such user"; 
+    return "no such user";
   }
 }
 
