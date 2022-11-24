@@ -1,4 +1,4 @@
-import 'package:autorization/components/settings/change_theme_button.dart';
+import 'package:autorization/widgets/change_theme_button.dart';
 import 'package:autorization/components/settings/confirm_button.dart';
 import 'package:autorization/main.dart';
 import 'package:flutter/material.dart';
