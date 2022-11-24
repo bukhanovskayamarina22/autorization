@@ -1,0 +1,25 @@
+{
+  "@@locale": "cs",
+
+  "pageLoginUsername" : "Vaše přihlašovací jméno",
+  
+  "pageLoginUsernameHelp" : "Email",
+  
+  "pageLoginUsernameError": "Prosím zadejte platnou emailovou adresu",
+  
+  "pageLoginPassword" : "Vaše heslo",
+  
+  "pageLoginPasswordHelp": "Minimálně 8 znaků",
+  
+  "pageLoginPasswordError": "Heslo musí mít nejméně 8 znaků",
+  
+  "pageLoginButtonSubmit": "Poslat",
+  
+  "pageLoginButtonGoogle": "Přihlaste se pomocí účtu Google",
+  
+  "pageLoginButtonApple": "Přihlaste se pomocí účtu AppleID",
+
+  "pageSettingsTitle": "Settings",
+
+  "pageSettingsTextLanguage": "Language"
+}

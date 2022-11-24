@@ -1,0 +1,23 @@
+{
+  "pageLoginUsername" : "Ваш Логин",
+  
+  "pageLoginUsernameHelp" : "Почта",
+  
+  "pageLoginUsernameError": "Введите действующий адрес электронной почты",
+  
+  "pageLoginPassword" : "Ваш Пароль",
+  
+  "pageLoginPasswordHelp": "Не менее 8 символов",
+  
+  "pageLoginPasswordError": "Пароль должен быть не менее 8 символов",
+  
+  "pageLoginButtonSubmit": "Отправить",
+  
+  "pageLoginButtonGoogle": "Вход с аккаунтом Google",
+  
+  "pageLoginButtonApple": "Вход с аккаунтом AppleID",
+
+  "pageSettingsTitle": "Настройки",
+
+  "pageSettingsTextLanguage": "Язык"
+}
