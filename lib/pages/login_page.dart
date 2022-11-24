@@ -21,7 +21,9 @@ class _LoginPageState extends State<LoginPage> {
 
     final password = PasswordField();
 
-    final loginButton = SubmitButton(formKey: _formKey,);
+    final loginButton = SubmitButton(
+      formKey: _formKey,
+    );
 
     final googleAuth = GoogleAuth();
 
@@ -30,28 +32,27 @@ class _LoginPageState extends State<LoginPage> {
     final settings = SettingsButton();
 
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Center(
-      child: SizedBox(
-        width: 400.0,
-        height: 600.0,
-        child: Center(
-          child: ListView(
-            shrinkWrap: true,
-            padding: EdgeInsets.only(left: 24.0, right: 24.0),
-            children: <Widget>[
-              settings,
-              email,
-              SizedBox(height: 8.0),
-              password,
-              SizedBox(height: 24.0),
-              loginButton,
-              googleAuth,
-              appleAuth,     
-            ],
+        child: SizedBox(
+          width: 400.0,
+          height: 600.0,
+          child: Center(
+            child: ListView(
+              shrinkWrap: true,
+              padding: EdgeInsets.only(left: 24.0, right: 24.0),
+              children: <Widget>[
+                settings,
+                email,
+                SizedBox(height: 8.0),
+                password,
+                SizedBox(height: 24.0),
+                loginButton,
+                googleAuth,
+                appleAuth,
+              ],
+            ),
           ),
         ),
-      ),
       ),
     );
   }

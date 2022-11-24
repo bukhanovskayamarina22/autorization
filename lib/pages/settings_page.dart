@@ -37,7 +37,7 @@ class SettingsPageState extends State<SettingsPage> {
                 children: [
                   //Text language
                   TextLanguage(),
-                  //Buttons for language
+                  //Поменять на toggle_button
                   Flexible(
                       child: Container(
                           width: 400,
@@ -111,7 +111,7 @@ class TextLanguage extends StatelessWidget {
               child: Text(
             AppLocalizations.of(context)!.pageSettingsTextLanguage,
             textAlign: TextAlign.center,
-            selectionColor: Colors.blue,
+            selectionColor: Theme.of(context).iconTheme.color,
             style: const TextStyle(fontWeight: FontWeight.bold),
           ))),
     );
