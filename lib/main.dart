@@ -1,11 +1,17 @@
-import 'package:autorization/components/settings/theme_provider.dart';
+import 'package:autorization/provider/theme_provider.dart';
+import 'package:autorization/src/database_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
 import 'pages/login_page.dart';
+import 'package:hive/hive.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  startBase();
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   @override
@@ -26,6 +32,12 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _locale = value;
     });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
   }
 
   @override

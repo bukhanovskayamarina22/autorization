@@ -1,4 +1,39 @@
-enum LoginProvider { google, azure }
+import 'package:autorization/pages/home_page.dart';
+import 'package:flutter/material.dart';
+import 'package:googleapis_auth/auth_io.dart';
+import 'package:http/http.dart' as http;
+import 'package:path/path.dart';
+
+//Выловить отсюда email и токен
+Future<AccessCredentials> signIn() async {
+  final client = http.Client();
+  print(client);
+  String url_a = '';
+  try {
+    return await obtainAccessCredentialsViaUserConsent(
+      ClientId(
+          '551314006766-4rfg36nct9if6o3hs326q3qa3qlm8kfo.apps.googleusercontent.com',
+          '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'),
+      ['email'],
+      client,
+      _prompt,
+    );
+  } finally {
+    print("Hey");
+    client.close();
+  }
+}
+
+void _prompt(String url) {
+  print('Hi');
+  print('Please go to the following URL and grant access:');
+  print('  => $url');
+  print('');
+}
+
+
+
+/*enum LoginProvider { google, azure }
 
 extension LoginProviderExtension on LoginProvider {
   String get key {
@@ -51,3 +86,4 @@ extension LoginProviderExtension on LoginProvider {
   }
 }
 
+*/

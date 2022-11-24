@@ -1,6 +1,7 @@
 import 'package:autorization/components/autorization/apple_auth.dart';
 import 'package:autorization/components/autorization/google_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../components/autorization/username_field.dart';
 import '../components/autorization/password_field.dart';
 import '../components/autorization/submit_button.dart';

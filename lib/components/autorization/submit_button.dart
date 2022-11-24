@@ -1,5 +1,6 @@
 import 'package:autorization/src/user.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../constants/controllers.dart';
 import '../../pages/home_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -20,6 +21,7 @@ class SubmitButton extends StatefulWidget {
 class _SubmitButtonState extends State<SubmitButton> {
   @override
   Widget build(BuildContext context) {
+    var user1 = User(email: 'user1@gmail.com', password: 'password1');
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: ElevatedButton(
