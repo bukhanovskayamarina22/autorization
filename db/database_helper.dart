@@ -2,12 +2,9 @@
 import 'dart:async';
 import 'dart:core';
 
-<<<<<<< Updated upstream
 // import 'package:autorization/flutter_app.dart';
 import 'package:autorization/src/user.dart';
-=======
 import 'package:autorization/flutter_app.dart';
->>>>>>> Stashed changes
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -24,7 +21,6 @@ class DatabaseHelper {
     return await Hive.box<Map>('users');
   }
 
-<<<<<<< Updated upstream
   Future addUser({required Box box, required User user}) async {
     Map userMap = user.toMap();
     box.put('${user.email}', userMap);
@@ -65,26 +61,3 @@ class DatabaseHelper {
 //   print(nonExistingUser);
 
 // }
-=======
-  Future addUser({required Box box, required user}) async {
-    userMap = user.to
-    box.put(${user.email}, user);
-  }
-
-}
-
-void main() async {
-  await Hive.initFlutter();
-
-  var databaseHelper = await DatabaseHelper();
-
-  var opendb = await databaseHelper.openDatabase();
-  var openBox = await databaseHelper.openBox();
-
-  var user1 = User(email: 'user1@gmail.com', password: 'password1');
-  var user2 = User(email: 'user2@gmail.com', password: 'password2');
-
-  var addedUser = openBox.
-  print('added user: $user1');
-}
->>>>>>> Stashed changes
