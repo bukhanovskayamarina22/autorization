@@ -114,25 +114,11 @@ class MyCustomFormState extends State<MyCustomForm> {
                   if (value == null || value.isEmpty) {
                     return 'Please enter some text';
                   }
-                  if (value.length < 7) {
+                  if (value.length < 8) {
                     return AppLocalizations.of(context)!
                         .pageLoginPasswordError;
                   }
                 },
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 70),
-              child: Container(
-                width: double.infinity,
-                color: Colors.transparent,
-                child: OutlinedButton(
-                  onPressed: () {
-                    signIn(context);
-                  },
-                  child: Text(
-                      AppLocalizations.of(context)!.pageLoginButtonGoogle),
-                ),
               ),
             ),
             Padding(
