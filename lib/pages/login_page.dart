@@ -1,27 +1,20 @@
 // ignore_for_file: prefer_const_constructors
-
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 import 'package:autorization/constants/controllers.dart';
-
 import 'package:autorization/pages/settings_page.dart';
-
 import 'package:autorization/provider/user_input_email_provider.dart';
 import 'package:autorization/provider/user_input_password_provider.dart';
-
 import 'package:autorization/src/custom_icons.dart';
 import 'package:autorization/src/google_login.dart';
 import 'package:autorization/src/user.dart';
-import 'package:flutter/material.dart';
-import 'package:googleapis_auth/googleapis_auth.dart';
-import 'package:provider/provider.dart';
 
 import '../components/settings/settings_button.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../db/database_helper.dart';
-import 'home_page.dart';
-
 import '../widgets/popup.dart';
-
+import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
   static String tag = 'login-page';
@@ -44,9 +37,6 @@ class MyCustomForm extends StatefulWidget {
   MyCustomFormState createState() {
     return MyCustomFormState();
   }
-
-
-
 }
 
 // Create a corresponding State class.
@@ -179,7 +169,6 @@ class MyCustomFormState extends State<MyCustomForm> {
                       ),
                     ),
                   ),
-
                   Padding(
                     padding: EdgeInsets.only(top: 70),
                     child: Container(
