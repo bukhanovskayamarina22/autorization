@@ -16,15 +16,15 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
 
     final email = UsernameField();
 
     final password = PasswordField();
+    final _formKey = GlobalKey<FormState>();
 
     final loginButton = SubmitButton(
-      formKey: _formKey,
-    );
+      formkey: _formKey,
+);
 
     final googleAuth = GoogleAuth();
 
@@ -57,6 +57,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
 }
 // class _LoginPageState extends StatelessWidget {
 //   static String tag = 'home-page';

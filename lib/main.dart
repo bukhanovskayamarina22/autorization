@@ -22,8 +22,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+   final _formKey = GlobalKey<FormState>();
+
   final routes = <String, WidgetBuilder>{
-    LoginPage.tag: (context) => LoginPage(),
+    // LoginPage.tag: (context) => LoginPage(),
     HomePage.tag: (context) => HomePage(),
   };
   Locale _locale = Locale('en', '');

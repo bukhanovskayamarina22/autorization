@@ -6,19 +6,25 @@ import '../../pages/home_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SubmitButton extends StatefulWidget {
-  const SubmitButton({
+  SubmitButton({
     Key? key,
-    required GlobalKey<FormState> formKey,
-  })  : _formKey = formKey,
-        super(key: key);
+    required GlobalKey formkey,
+  })  : super(key: key);
 
-  final GlobalKey<FormState> _formKey;
 
   @override
   State<SubmitButton> createState() => _SubmitButtonState();
 }
-
 class _SubmitButtonState extends State<SubmitButton> {
+
+  final _formKey = GlobalKey<FormState>();
+  void _submit() {
+    final isValid = _formKey.currentState!.validate();
+      if (!isValid) {
+        return; 
+      }
+      _formKey.currentState!.save();
+  }
   @override
   Widget build(BuildContext context) {
     var user1 = User(email: 'user1@gmail.com', password: 'password1');
@@ -26,10 +32,11 @@ class _SubmitButtonState extends State<SubmitButton> {
       padding: EdgeInsets.all(8.0),
       child: ElevatedButton(
         onPressed: () async {
-          var user = User(
-              email: emailController.text, password: passwordController.text);
-          Navigator.of(context).pushNamed(HomePage.tag);
-          // // Validate returns true if the form is valid, or false otherwise.
+          if (_formKey.currentState!.validate()) {
+            Navigator.of(context).pushNamed(HomePage.tag);
+            var user = User(
+            email: emailController.text, password: passwordController.text);
+          }
         },
         child: Center(
           widthFactor: 8,
