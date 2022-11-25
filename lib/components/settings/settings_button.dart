@@ -1,3 +1,4 @@
+import 'package:autorization/widgets/toggle_button_language.dart';
 import 'package:flutter/material.dart';
 import '../../src/custom_icons.dart';
 import '../../pages/settings_page.dart';

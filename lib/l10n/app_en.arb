@@ -30,6 +30,9 @@
   "@pageSettingsTitle": {},
 
   "pageSettingsTextLanguage": "Language",
-  "@pageSettingsTextLanguage": {}
+  "@pageSettingsTextLanguage": {},
+
+  "pageSettingsTextDarkTheme": "Dark Theme",
+  "@pageSettingsTextDarkTheme": {}
 
 }
