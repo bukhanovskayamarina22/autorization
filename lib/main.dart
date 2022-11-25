@@ -1,3 +1,4 @@
+import 'package:autorization/pages/no_such_user_page.dart';
 import 'package:autorization/provider/locale_provider.dart';
 import 'package:autorization/provider/theme_provider.dart';
 import 'package:autorization/src/custom_icons.dart';
@@ -12,9 +13,10 @@ import 'pages/home_page.dart';
 import 'pages/login_page.dart';
 import 'package:hive/hive.dart';
 
-void main() {
+void main() async {
   startBase();
   runApp(MyApp());
+  await Hive.initFlutter();
 }
 
 class MyApp extends StatefulWidget {
@@ -27,11 +29,12 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-   final _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
   final routes = <String, WidgetBuilder>{
     // LoginPage.tag: (context) => LoginPage(),
     HomePage.tag: (context) => HomePage(),
+    NoSuchUser.tag:(context) => NoSuchUser(),
   };
 
   @override
