@@ -24,7 +24,6 @@ class BuildPopupDialog extends StatelessWidget {
       ),
     ],
   );
-    throw UnimplementedError();
   }
 }
 

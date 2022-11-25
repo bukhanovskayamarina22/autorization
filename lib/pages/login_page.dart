@@ -150,8 +150,8 @@ class MyCustomFormState extends State<MyCustomForm> {
                       child: ElevatedButton(
                         onPressed: () async {
                           var databaseHelper = await DatabaseHelper();
-                          var opendb = await databaseHelper.openDatabase();
-                          var openBox = await databaseHelper.openBox();
+                          var opendb = await databaseHelper.openUserBox();
+                          var openBox = await databaseHelper.getUserBox();
                           print(_formKey.currentState);
                           // Validate returns true if the form is valid, or false otherwise.
                           if (_formKey.currentState!.validate()) {
@@ -213,4 +213,19 @@ class MyCustomFormState extends State<MyCustomForm> {
         );
       }
     );
+
   }
+
+
+// class _LoginPageState extends StatelessWidget {
+//   static String tag = 'home-page';
+
+//   @override
+//   Widget build(BuildContext context) {
+//     
+
+//     
+
+
+
+  
