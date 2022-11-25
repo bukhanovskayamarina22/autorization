@@ -1,9 +1,15 @@
+
+import 'package:autorization/constants/controllers.dart';
+import 'package:autorization/pages/settings_page.dart';
 import 'package:autorization/provider/theme_provider.dart';
+import 'package:autorization/src/custom_icons.dart';
 import 'package:autorization/src/database_helper.dart';
+import 'package:autorization/src/google_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+import 'components/settings/settings_button.dart';
 import 'pages/home_page.dart';
 import 'pages/login_page.dart';
 import 'package:hive/hive.dart';
@@ -64,72 +70,6 @@ class _MyAppState extends State<MyApp> {
       });
 }
 
-  /*) {
-    print('build');
-    const appTitle = 'Form Validation Demo';
-    return MaterialApp(
-      title: 'Kodeversitas',
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      locale: _locale,
-      themeMode: ThemeMode.system,
-      theme: MyThemes.lightTheme,
-      darkTheme: MyThemes.darkTheme,
-      /*theme: ThemeData(
-        primarySwatch: Colors.lightBlue,
-        fontFamily: 'Nunito',
-      ),*/
-      home: LoginPage(),
-      routes: routes,
-    );
-  }
-}*/
 
-// class MyApp extends StatefulWidget {
-//   const MyApp({super.key});
 
-//   @override
-//   State<MyApp> createState() => _MyAppState();
-// }
 
-// class _MyAppState extends State<MyApp> {
-//   @override
-//   Widget build(BuildContext context) {
-//     const appTitle = 'Form Validation Demo';
-//       return MaterialApp(
-//         title: 'Kodeversitas',
-//         debugShowCheckedModeBanner: false,
-//         theme: ThemeData(
-//           primarySwatch: Colors.lightBlue,
-//           fontFamily: 'Nunito',
-//         ),
-//         home: LoginPage(),
-//         routes: routes,
-//       );
-
-    // return MaterialApp(
-    //   home: Scaffold(
-    //     appBar: AppBar(
-    //       title: const Text(appTitle),
-    //     ),
-    //     body: const Center(
-    //       child: CustomForm(),
-    //     ),
-    //     floatingActionButton: const Settings(),
-    //   ),
-
-    // );
-//     return MaterialApp(
-//       home: Scaffold(
-//         appBar: AppBar(
-//           title: const Text(appTitle),
-//         ),
-//         body: const Center(
-//           child: CustomForm(),
-//         ),
-//         floatingActionButton: const SettingsButton(),
-//       ),
-//     );
-//   }
-// }
