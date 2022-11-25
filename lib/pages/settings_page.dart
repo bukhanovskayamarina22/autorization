@@ -33,15 +33,10 @@ class SettingsPageState extends State<SettingsPage> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
-                    child: TextLanguage(),
-                  ),
+                  TextLanguage(),
                   //Поменять на toggle_button
-                  Container(
-                    child: ToggleButtons1(),
-                  ),
+
+                  ToggleButtons1(),
                 ],
               ),
               Row(
@@ -53,7 +48,8 @@ class SettingsPageState extends State<SettingsPage> {
                           height: 40,
                           child: FittedBox(
                               child: Text(
-                            "Dark Theme",
+                            AppLocalizations.of(context)!
+                                .pageSettingsTextDarkTheme,
                             textAlign: TextAlign.center,
                             selectionColor: Colors.blue,
                             style: const TextStyle(fontWeight: FontWeight.bold),
@@ -92,4 +88,3 @@ class TextLanguage extends StatelessWidget {
     );
   }
 }
-

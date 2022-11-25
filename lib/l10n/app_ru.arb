@@ -19,5 +19,7 @@
 
   "pageSettingsTitle": "Настройки",
 
-  "pageSettingsTextLanguage": "Язык"
+  "pageSettingsTextLanguage": "Язык",
+
+  "pageSettingsTextDarkTheme": "Темная тема"
 }

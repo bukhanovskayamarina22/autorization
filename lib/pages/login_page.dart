@@ -4,6 +4,8 @@ import 'package:autorization/components/autorization/apple_auth.dart';
 import 'package:autorization/components/autorization/google_auth.dart';
 import 'package:autorization/constants/controllers.dart';
 import 'package:autorization/pages/settings_page.dart';
+import 'package:autorization/provider/theme_provider.dart';
+
 import 'package:autorization/src/custom_icons.dart';
 import 'package:autorization/src/google_login.dart';
 import 'package:flutter/material.dart';
@@ -22,30 +24,10 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   @override
-  Widget build(BuildContext context) {
-
-    final email = UsernameField();
-
-    final password = PasswordField();
-    final _formKey = GlobalKey<FormState>();
-
-    final loginButton = SubmitButton(
-      formkey: _formKey,
-);
-
-    final googleAuth = GoogleAuth();
-
-    final appleAuth = AppleAuth();
-
-    final settings = SettingsButton();
-
-    return Scaffold(
-      body: MyCustomForm(),
-    );
-  }
-
+  Widget build(BuildContext context) => Scaffold(
+        body: MyCustomForm(),
+      );
 }
-
 
 class MyCustomForm extends StatefulWidget {
   const MyCustomForm({super.key});
@@ -59,7 +41,6 @@ class MyCustomForm extends StatefulWidget {
 // Create a corresponding State class.
 // This class holds data related to the form.
 class MyCustomFormState extends State<MyCustomForm> {
-
   // Create a global key that uniquely identifies the Form widget
   // and allows validation of the form.
   //
@@ -67,7 +48,6 @@ class MyCustomFormState extends State<MyCustomForm> {
   // not a GlobalKey<MyCustomFormState>.
   final _formKey = GlobalKey<FormState>();
   final settings = SettingsButton();
-  
 
   @override
   Widget build(BuildContext context) {
@@ -83,17 +63,16 @@ class MyCustomFormState extends State<MyCustomForm> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Align(
-              alignment: Alignment.bottomRight,
-              child: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SettingsPage()));   
+                alignment: Alignment.bottomRight,
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SettingsPage()));
                     },
-                  icon: Icon(CustomIcons.settings)
-                  ),
-                ),
+                    icon: Icon(CustomIcons.settings)),
+              ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 8.0),
                 child: TextFormField(
@@ -103,8 +82,10 @@ class MyCustomFormState extends State<MyCustomForm> {
                       color: Theme.of(context).iconTheme.color,
                     ),
                     border: OutlineInputBorder(),
-                    label: Text(AppLocalizations.of(context)!.pageLoginUsername),
-                    hintText: AppLocalizations.of(context)!.pageLoginUsernameHelp,
+                    label:
+                        Text(AppLocalizations.of(context)!.pageLoginUsername),
+                    hintText:
+                        AppLocalizations.of(context)!.pageLoginUsernameHelp,
                   ),
                   // The validator receives the text that the user has entered.
                   validator: (value) {
@@ -112,7 +93,8 @@ class MyCustomFormState extends State<MyCustomForm> {
                         value.isEmpty ||
                         !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                             .hasMatch(value)) {
-                      return AppLocalizations.of(context)!.pageLoginUsernameError;
+                      return AppLocalizations.of(context)!
+                          .pageLoginUsernameError;
                     }
                     return null;
                   },
@@ -128,8 +110,10 @@ class MyCustomFormState extends State<MyCustomForm> {
                       color: Theme.of(context).iconTheme.color,
                     ),
                     border: OutlineInputBorder(),
-                    label: Text(AppLocalizations.of(context)!.pageLoginPassword),
-                    hintText: AppLocalizations.of(context)!.pageLoginPasswordHelp,
+                    label:
+                        Text(AppLocalizations.of(context)!.pageLoginPassword),
+                    hintText:
+                        AppLocalizations.of(context)!.pageLoginPasswordHelp,
                   ),
                   // The validator receives the text that the user has entered.
                   validator: (value) {
@@ -137,7 +121,8 @@ class MyCustomFormState extends State<MyCustomForm> {
                       return 'Please enter some text';
                     }
                     if (value.length < 7) {
-                      return AppLocalizations.of(context)!.pageLoginPasswordError;
+                      return AppLocalizations.of(context)!
+                          .pageLoginPasswordError;
                     }
                   },
                 ),
@@ -168,10 +153,11 @@ class MyCustomFormState extends State<MyCustomForm> {
                   width: double.infinity,
                   color: Colors.transparent,
                   child: OutlinedButton(
-                      onPressed: () {
-                        signIn();
-                      },
-                      child: Text(AppLocalizations.of(context)!.pageLoginButtonGoogle),
+                    onPressed: () {
+                      signIn();
+                    },
+                    child: Text(
+                        AppLocalizations.of(context)!.pageLoginButtonGoogle),
                   ),
                 ),
               ),
@@ -182,7 +168,8 @@ class MyCustomFormState extends State<MyCustomForm> {
                   color: Colors.transparent,
                   child: OutlinedButton(
                     onPressed: () {},
-                    child: Text(AppLocalizations.of(context)!.pageLoginButtonApple),
+                    child: Text(
+                        AppLocalizations.of(context)!.pageLoginButtonApple),
                   ),
                 ),
               ),
