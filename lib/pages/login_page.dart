@@ -9,6 +9,7 @@ import 'package:autorization/provider/theme_provider.dart';
 import 'package:autorization/src/custom_icons.dart';
 import 'package:autorization/src/google_login.dart';
 import 'package:flutter/material.dart';
+import 'package:googleapis_auth/googleapis_auth.dart';
 import 'package:provider/provider.dart';
 import '../components/autorization/username_field.dart';
 import '../components/autorization/password_field.dart';
@@ -154,7 +155,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   color: Colors.transparent,
                   child: OutlinedButton(
                     onPressed: () {
-                      signIn();
+                      signIn(context);
                     },
                     child: Text(
                         AppLocalizations.of(context)!.pageLoginButtonGoogle),
