@@ -1,9 +1,10 @@
 // ignore_for_file: await_only_futures
 
 import 'dart:core';
-import 'package:autorization/src/user.dart';
-import 'package:hive/hive.dart';
+
 import 'package:hive_flutter/adapters.dart';
+
+import 'package:autorization/src/user.dart';
 
 class DatabaseHelper {
   //empty constructor
@@ -41,7 +42,9 @@ class DatabaseHelper {
   }
 }
 
-
+Future startBase() async {
+  await Hive.initFlutter();
+}
 
 // void main() async {
 //   //starting and opening the database

@@ -1,16 +1,13 @@
-// ignore_for_file: unnecessary_this, prefer_initializing_formals
-
 class User {
   var email;
   var password;
-  User({required email, required password}) {
-    this.email = email;
-    this.password = password;
-  }
+  User({
+    required this.email, 
+    required this.password});
 
   Map<String, dynamic> toMap() =>
-      {'email': this.email, 'password': this.password};
+      {'email': email, 'password': password};
 
   @override
-  String toString() => 'email: ${this.email}, password: ${this.password}';
+  String toString() => 'email: $email, password: $password';
 }

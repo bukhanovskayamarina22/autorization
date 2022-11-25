@@ -1,10 +1,32 @@
-import 'package:autorization/src/google_authapi.dart';
 import 'package:flutter/material.dart';
+
+import 'package:autorization/src/google_auth_api.dart';
 
 //Выловить отсюда email и токен
 void signIn(BuildContext context) async {
   var client = GoogleAuthapi(context);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*enum LoginProvider { google, azure }
 

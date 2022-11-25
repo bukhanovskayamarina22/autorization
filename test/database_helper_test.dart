@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../lib/db/database_helper.dart';
+import '../lib/src/db/database_helper.dart';
 
 void main() {
   test('adds new User to database', () async {

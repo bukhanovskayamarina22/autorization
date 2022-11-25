@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:autorization/components/settings/confirm_button.dart';
 import 'package:autorization/widgets/change_theme_button.dart';
 import 'package:autorization/widgets/toggle_button_language.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
