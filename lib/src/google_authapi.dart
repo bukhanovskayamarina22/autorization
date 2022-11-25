@@ -7,8 +7,6 @@ import '../pages/home_page.dart';
 
 Future<AccessCredentials> GoogleAuthapi(BuildContext context) async {
   final client = http.Client();
-  String url_a = '';
-
   try {
     return await obtainAccessCredentialsViaUserConsent(
       ClientId(
@@ -25,8 +23,8 @@ Future<AccessCredentials> GoogleAuthapi(BuildContext context) async {
 }
 
 void _prompt(String url) async {
-  Uri url_a = Uri.parse(url);
-  if (await canLaunchUrl(url_a)) {
-    launchUrl(url_a);
+  Uri urlA = Uri.parse(url);
+  if (await canLaunchUrl(urlA)) {
+    launchUrl(urlA);
   }
 }

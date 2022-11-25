@@ -1,4 +1,3 @@
-import 'package:autorization/widgets/toggle_button_language.dart';
 import 'package:flutter/material.dart';
 import '../../src/custom_icons.dart';
 import '../../pages/settings_page.dart';
@@ -22,6 +21,6 @@ class _SettingsButtonState extends State<SettingsButton> {
                   MaterialPageRoute(
                       builder: (context) => const SettingsPage()));
             },
-            icon: Icon(CustomIcons.settings)));
+            icon: const Icon(CustomIcons.settings)));
   }
 }

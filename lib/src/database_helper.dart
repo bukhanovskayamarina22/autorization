@@ -1,10 +1,7 @@
-import 'dart:async';
 import 'dart:core';
 
 // import 'package:autorization/flutter_app.dart';
 import 'package:autorization/src/user.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 
 class DatabaseHelper {
