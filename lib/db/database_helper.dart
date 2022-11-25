@@ -15,7 +15,7 @@ class DatabaseHelper {
     return await Hive.openBox<Map>('users');
   }
 
-  Future getUsersBox() async {
+  Future getUserBox() async {
     return await Hive.box<Map>('users');
   }
 
