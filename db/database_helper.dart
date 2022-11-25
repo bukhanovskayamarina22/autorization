@@ -13,12 +13,20 @@ class DatabaseHelper {
   //empty constructor
   DatabaseHelper();
 
-  Future openDatabase() async {
+  Future openUserBox() async {
     return await Hive.openBox<Map>('users');
   }  
 
-  Future openBox() async {
+  Future getUsersBox() async {
     return await Hive.box<Map>('users');
+  }
+
+  Future openGoogleBox() async {
+    return await Hive.openBox('google-tokens');
+  }
+
+  Future getGoogleBox() async {
+    return await Hive.box('google-tokens');
   }
 
   Future addUser({required Box box, required User user}) async {
@@ -30,6 +38,10 @@ class DatabaseHelper {
     Map userMap = user.toMap();
     if (box.get('${user.email}') != null) return '${user.password}';
     return "no such user"; 
+  }
+
+  Future addGoogleToken({required Box box, required String token}) async {
+    box.add(token);
   }
 }
 
