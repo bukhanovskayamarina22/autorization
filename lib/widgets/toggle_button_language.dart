@@ -17,7 +17,7 @@ class _ToggleButtons1State extends State<ToggleButtons1> {
     final locale = Provider.of<LocaleProvider>(context);
     final List<String> language_for_locale = locale.language_for_locale;
     final List<String> language = locale.language;
-    List<bool> isSelected = locale.SelectLocale(context);
+    List<bool> isSelected = locale.SelectLocale();
     print(isSelected);
 
     return Container(

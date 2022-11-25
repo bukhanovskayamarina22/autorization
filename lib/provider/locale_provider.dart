@@ -5,7 +5,7 @@ class LocaleProvider extends ChangeNotifier {
   List<String> language_for_locale = ["ru", "en", "cs"];
   List<String> language = ["Rus", "Eng", "Cze"];
 
-  List<bool> SelectLocale(BuildContext context) {
+  List<bool> SelectLocale() {
     List<bool> isSelected = [false, false, false];
     var localeProvaider = _locale;
     for (int index = 0; index < isSelected.length; index++) {
