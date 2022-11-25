@@ -17,6 +17,7 @@ class _PasswordFieldState extends State<PasswordField> {
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: TextFormField(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         controller: passwordController,
         decoration: InputDecoration(
           labelStyle: TextStyle(
