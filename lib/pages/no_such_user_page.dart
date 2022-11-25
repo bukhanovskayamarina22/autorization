@@ -5,6 +5,7 @@ class NoSuchUser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: prefer_const_constructors
     final text = Text(
       'User does not exist',
       style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -16,7 +17,6 @@ class NoSuchUser extends StatelessWidget {
         ),
         body: Center(
           child: text,
-        )
-      );
+        ));
   }
 }

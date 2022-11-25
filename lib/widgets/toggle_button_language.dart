@@ -1,11 +1,12 @@
-import 'package:autorization/main.dart';
 import 'package:autorization/provider/locale_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:autorization/src/SelectLanguage.dart';
 
 class ToggleButtons1 extends StatefulWidget {
+  const ToggleButtons1({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _ToggleButtons1State createState() => _ToggleButtons1State();
 }
 

@@ -1,6 +1,4 @@
-import 'package:autorization/main.dart';
 import 'package:flutter/material.dart';
-import '../../constants/controllers.dart';
 
 class ConfirmButton extends StatefulWidget {
   const ConfirmButton({super.key});
@@ -15,6 +13,7 @@ class _ConfirmButtonState extends State<ConfirmButton> {
         onPressed: () {
           Navigator.pop(context);
         },
+        // ignore: prefer_const_constructors
         child: Align(
           widthFactor: 1,
           heightFactor: 1,
