@@ -1,3 +1,4 @@
+import 'package:autorization/provider/locale_provider.dart';
 import 'package:autorization/provider/theme_provider.dart';
 import 'package:autorization/src/database_helper.dart';
 import 'package:flutter/material.dart';
@@ -26,39 +27,31 @@ class _MyAppState extends State<MyApp> {
     LoginPage.tag: (context) => LoginPage(),
     HomePage.tag: (context) => HomePage(),
   };
-  Locale _locale = Locale('en', '');
-
-  void setLocale(Locale value) {
-    setState(() {
-      _locale = value;
-    });
-  }
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) => ChangeNotifierProvider(
-      create: (context) => ThemeProvider(),
-      builder: (context, _) {
-        final themeProvider = Provider.of<ThemeProvider>(context);
-
-        return MaterialApp(
-          title: 'Kodeversitas',
-          debugShowCheckedModeBanner: false,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          locale: _locale,
-          themeMode: themeProvider.themeMode,
-          theme: MyThemes.lightTheme,
-          darkTheme: MyThemes.darkTheme,
-          home: LoginPage(),
-          routes: routes,
-        );
-      });
+  Widget build(BuildContext context) => MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (context) => ThemeProvider()),
+            ChangeNotifierProvider(
+                create: (context) => LocaleProvider(const Locale('en', ''))),
+          ],
+          builder: (context, child) {
+            ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+            LocaleProvider localeProvider =
+                Provider.of<LocaleProvider>(context);
+            return MaterialApp(
+              title: 'Kodeversitas',
+              debugShowCheckedModeBanner: false,
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+              locale: localeProvider.locale,
+              themeMode: themeProvider.themeMode,
+              theme: MyThemes.lightTheme,
+              darkTheme: MyThemes.darkTheme,
+              home: LoginPage(),
+              routes: routes,
+            );
+          });
 }
 
   /*) {
