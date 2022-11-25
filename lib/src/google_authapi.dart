@@ -10,7 +10,7 @@ Future<AccessCredentials> GoogleAuthapi(BuildContext context) async {
   String url_a = '';
 
   try {
-    return await obtainAccessCredentialsViaUserConsent(
+    var token = await obtainAccessCredentialsViaUserConsent(
       ClientId(
           '551314006766-4rfg36nct9if6o3hs326q3qa3qlm8kfo.apps.googleusercontent.com',
           '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'),
@@ -18,8 +18,9 @@ Future<AccessCredentials> GoogleAuthapi(BuildContext context) async {
       client,
       _prompt,
     );
+    print(token.accessToken);
+    return token;
   } finally {
-    client.close();
     Navigator.of(context).pushNamed(HomePage.tag);
   }
 }

@@ -7,8 +7,8 @@ import 'package:http/http.dart' as http;
 
 //Выловить отсюда email и токен
 void signIn(BuildContext context) async {
-  Future<AccessCredentials> client = GoogleAuthapi(context);
-  print(client);
+  var client = GoogleAuthapi(context);
+  print("hahah");
 }
 
 
