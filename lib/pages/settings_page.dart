@@ -1,6 +1,7 @@
 import 'package:autorization/components/settings/confirm_button.dart';
 import 'package:autorization/main.dart';
 import 'package:autorization/widgets/change_theme_button.dart';
+import 'package:autorization/widgets/toggle_button_language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -14,10 +15,6 @@ class SettingsPage extends StatefulWidget {
 }
 
 class SettingsPageState extends State<SettingsPage> {
-  final List<String> language_for_locale = ["ru", "en", "cs"];
-  final List<String> language = ["Rus", "Eng", "Cze"];
-  int selectedIndex = -1;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,29 +25,26 @@ class SettingsPageState extends State<SettingsPage> {
         alignment: Alignment.topCenter,
         child: Container(
             width: 500,
-            height: 100,
+            margin: EdgeInsets.symmetric(horizontal: 10.0),
+            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
             alignment: Alignment.center,
-            child: Column(children: [
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  //Text language
-                  TextLanguage(),
+                  Container(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
+                    child: TextLanguage(),
+                  ),
                   //Поменять на toggle_button
-                  Flexible(
-                      child: Container(
-                          width: 400,
-                          height: 40,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: language.length,
-                            itemBuilder: _createListView,
-                          ))),
+                  Container(
+                    child: ToggleButtons1(),
+                  ),
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Flexible(
@@ -72,25 +66,6 @@ class SettingsPageState extends State<SettingsPage> {
       floatingActionButton: const Align(
         alignment: Alignment.bottomCenter,
         child: ConfirmButton(),
-      ),
-    );
-  }
-
-  Widget _createListView(BuildContext context, int index) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          // устанавливаем индекс выделенного элемента
-          selectedIndex = index;
-        });
-        MyApp.of(context)?.setLocale(
-            Locale.fromSubtags(languageCode: language_for_locale[index]));
-      },
-      child: Container(
-        alignment: Alignment.center,
-        margin: EdgeInsets.symmetric(horizontal: 20),
-        color: index == selectedIndex ? Colors.black12 : Colors.white60,
-        child: Text(language[index], style: TextStyle(fontSize: 20)),
       ),
     );
   }
