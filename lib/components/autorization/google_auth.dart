@@ -2,7 +2,7 @@ import 'package:autorization/src/google_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class GoogleAuth extends StatefulWidget {
+/*class GoogleAuth extends StatefulWidget {
   const GoogleAuth({
     Key? key,
   }) : super(key: key);
@@ -21,10 +21,10 @@ class _GoogleAuthState extends State<GoogleAuth> {
         color: Colors.transparent,
         child: OutlinedButton(
             onPressed: () {
-              signIn();
+              signIn(context);
             },
             child: Text(AppLocalizations.of(context)!.pageLoginButtonGoogle)),
       ),
     );
   }
-}
+}*/
