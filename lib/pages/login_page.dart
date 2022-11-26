@@ -123,8 +123,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   },
                 ),
               ),
-            ),
-            Padding(
+              Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: SizedBox(
                 width: 350,
@@ -216,19 +215,19 @@ class MyCustomFormState extends State<MyCustomForm> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 70),
-                child: Container(
-                  width: double.infinity,
-                  color: Colors.transparent,
-                  child: OutlinedButton(
-                    onPressed: () {
-                      signIn(context);
-                    },
-                    child: Text(
-                        AppLocalizations.of(context)!.pageLoginButtonGoogle),
-                  ),
+              padding: EdgeInsets.only(top: 70),
+              child: Container(
+                width: double.infinity,
+                color: Colors.transparent,
+                child: OutlinedButton(
+                  onPressed: () {
+                    signIn(context);
+                  },
+                  child: Text(
+                      AppLocalizations.of(context)!.pageLoginButtonGoogle),
                 ),
               ),
+            ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Container(
@@ -242,9 +241,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                 ),
               ),
             ],
+            ),
           ),
         ),
-      ),
-    );
+      );
   }
 }

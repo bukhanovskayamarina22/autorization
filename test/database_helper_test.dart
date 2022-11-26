@@ -22,11 +22,12 @@ void main() {
     var user = User(email: 'name@example.com', password: 'asdfasdf');
     await Hive.initFlutter();
     var databaseHelper = await DatabaseHelper();
-    var openBox = await databaseHelper.getUserBox();
+    Box openBox = await databaseHelper.getUserBox();
+    var userMap = user.toMap();
 
     var r = await databaseHelper.userExists(box: openBox, user: user);
 
-    expect(r, '${user.password}');
+    expect(r, user.password);
   });
 
     test('checks if user exists in database by email', () async {
