@@ -100,19 +100,19 @@ class MyCustomFormState extends State<MyCustomForm> {
               PasswordWidget(formKey: _formKey),
               ButtonSignIn(formKey: _formKey),
               Padding(
-              padding: EdgeInsets.only(top: 70),
-              child: Container(
-                width: double.infinity,
-                color: Colors.transparent,
-                child: OutlinedButton(
-                  onPressed: () {
-                    signIn(context);
-                  },
-                  child: Text(
-                      AppLocalizations.of(context)!.pageLoginButtonGoogle),
+                padding: EdgeInsets.only(top: 70),
+                child: Container(
+                  width: double.infinity,
+                  color: Colors.transparent,
+                  child: OutlinedButton(
+                    onPressed: () {
+                      signIn(context);
+                    },
+                    child: Text(
+                        AppLocalizations.of(context)!.pageLoginButtonGoogle),
+                  ),
                 ),
               ),
-            ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Container(
@@ -126,10 +126,10 @@ class MyCustomFormState extends State<MyCustomForm> {
                 ),
               ),
             ],
-            ),
           ),
         ),
-      );
+      ),
+    );
   }
 }
 
@@ -187,20 +187,15 @@ class PasswordWidget extends StatelessWidget {
             var databaseHelper = await DatabaseHelper();
             var opendb = await databaseHelper.openUserBox();
             var openBox = await databaseHelper.getUserBox();
-            print(_formKey.currentState);
-            print(_formKey.currentState!.validate());
             // Validate returns true if the form is valid, or false otherwise.
             if (_formKey.currentState!.validate()) {
               var user = await User(
                   email: emailController.text,
                   password: passwordController.text);
-              print(user);
               var userEmailAndPassswordCheck =
                   await databaseHelper.userExists(box: openBox, user: user);
-              print("userEmailAndPassswordCheck: $userEmailAndPassswordCheck");
               var emailExistsCheck = await databaseHelper.emailExists(
                   box: openBox, email: user.email);
-              print("emailExistsCheck: $emailExistsCheck");
               if (emailExistsCheck == false) {
                 showDialog(
                   context: context,

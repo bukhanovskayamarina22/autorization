@@ -1,10 +1,17 @@
-import 'package:flutter/material.dart';
-
 import 'package:autorization/src/google_auth_api.dart';
+import 'package:flutter/material.dart';
+import 'package:googleapis_auth/auth_io.dart';
+import 'package:http/http.dart' as http;
 
 //Выловить отсюда email и токен
 void signIn(BuildContext context) async {
-  var client = GoogleAuthapi(context);
+  AccessCredentials client = await GoogleAuthapi(context);
+  var tokenUser = client.accessToken.data;
+  print(tokenUser);
+  Uri endPoint = Uri.parse('https://www.googleapis.com/oauth2/v1/userinfo');
+  Map<String, String> tokenMap = {'Authorization': 'Bearer $tokenUser'};
+  var clientInfoJson = await http.get(endPoint, headers: tokenMap);
+  print(clientInfoJson.body);
 }
 
 
