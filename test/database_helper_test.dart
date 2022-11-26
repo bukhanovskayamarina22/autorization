@@ -91,4 +91,28 @@ void main() {
 
     expect(r, true);
   });
+
+  test('if email key is not in the box false returned', () async {
+    var user = User(email: 'asdf', password: 'asdf');
+    await Hive.initFlutter();
+    var databaseHelper = await DatabaseHelper();
+    var opendb = await databaseHelper.openUserBox();
+    Box openBox = await databaseHelper.getUserBox();
+
+    var r = await databaseHelper.emailExists(box: openBox, email: user.email);
+
+    expect(r, false);
+  });
+
+  test('if email key is in the box true returned', () async {
+    var user = User(email: 'name@example.com', password: 'asdfasdf');
+    await Hive.initFlutter();
+    var databaseHelper = await DatabaseHelper();
+    var opendb = await databaseHelper.openUserBox();
+    Box openBox = await databaseHelper.getUserBox();
+
+    var r = await databaseHelper.emailExists(box: openBox, email: user.email);
+
+    expect(r, true);
+  });
 }

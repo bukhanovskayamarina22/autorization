@@ -1,3 +1,5 @@
+import 'package:autorization/pages/registered_page.dart';
+import 'package:autorization/widgets/popup_user_exists.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:autorization/constants/controllers.dart';
@@ -8,7 +10,7 @@ import 'package:autorization/src/user.dart';
 
 import '../src/db/database_helper.dart';
 
-import '../widgets/popup.dart';
+import '../widgets/popup_no_user.dart';
 import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -145,9 +147,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) =>
-                              BuildPopupDialog(),
+                              BuildPopupDialogNoUser(),
                         );
-                        // Navigator.of(context).pushNamed(NoSuchUser.tag);
+                      // Navigator.of(context).pushNamed(NoSuchUser.tag);
                       }
                       print(userExistsString);
                       // If the form is valid, display a snackbar. In the real world,
@@ -160,6 +162,49 @@ class MyCustomFormState extends State<MyCustomForm> {
                     }
                   },
                   child: const Text('Submit'),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: SizedBox(
+                width: 350,
+                child: MaterialButton(
+                  onPressed: () async {
+                    var databaseHelper = await DatabaseHelper();
+                    var opendb = await databaseHelper.openUserBox();
+                    var openBox = await databaseHelper.getUserBox();
+                    print(_formKey.currentState);
+                    // Validate returns true if the form is valid, or false otherwise.
+                    if (_formKey.currentState!.validate()) {
+                      var user = await User(
+                          email: emailController.text,
+                          password: passwordController.text);
+                      var emailExists = await databaseHelper
+                          .emailExists(box: openBox, email: user.email);
+                      if (emailExists != false) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                            BuildPopupDialogUserExists(),
+                        );
+                        // ignore: use_build_context_synchronously
+
+                      } else {
+                        databaseHelper.addUser(box: openBox, user: user);
+                        Navigator.of(context).pushNamed(RegisteredPage.tag);
+                        // Navigator.of(context).pushNamed(NoSuchUser.tag);
+                      }
+                      // If the form is valid, display a snackbar. In the real world,
+                      // you'd often call a server or save the information in a database.
+                      // ignore: use_build_context_synchronously
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                            content: Text('Processing Data')),
+                      );
+                    }
+                  },
+                  child: const Text('Register'),
                 ),
               ),
             ),
