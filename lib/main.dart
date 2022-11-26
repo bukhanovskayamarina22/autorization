@@ -46,6 +46,7 @@ class _MyAppState extends State<MyApp> {
             LocaleProvider localeProvider =
                 Provider.of<LocaleProvider>(context);
             return MaterialApp(
+              key: Key('MaterialAppKey'),
               title: 'Kodeversitas',
               debugShowCheckedModeBanner: false,
               localizationsDelegates: AppLocalizations.localizationsDelegates,
