@@ -12,8 +12,12 @@
   "pageLoginPasswordHelp": "Minimálně 8 znaků",
   
   "pageLoginPasswordError": "Heslo musí mít nejméně 8 znaků",
+
+  "pageLoginPasswordErrorNull": "Zadejte prosím text",
   
-  "pageLoginButtonSubmit": "Poslat",
+  "pageLoginButtonLogin": "Přihlásit se",
+
+  "pageLoginButtonRegistr": "Registrovat",
   
   "pageLoginButtonGoogle": "Přihlaste se pomocí účtu Google",
   
