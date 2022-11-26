@@ -171,6 +171,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   child: const Text('Submit'),
                 ),
               ),
+            ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: SizedBox(
