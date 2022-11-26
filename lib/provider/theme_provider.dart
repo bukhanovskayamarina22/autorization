@@ -1,12 +1,30 @@
 import 'package:flutter/material.dart';
 
 class ThemeProvider extends ChangeNotifier {
-  ThemeMode themeMode = ThemeMode.light;
+  //For new theme need add to enum in system file
+  //C:\src\flutter\packages\flutter\lib\src\material\app.dart
 
-  bool get isDarkMode => themeMode == ThemeMode.dark;
+  ThemeMode _themeMode = ThemeMode.light;
+  List<ThemeMode> themes = [ThemeMode.system, ThemeMode.dark, ThemeMode.light];
+  List<String> themesText = ['System', 'Dark', 'Light'];
 
-  void toggleTheme(bool isOn) {
-    themeMode = isOn ? ThemeMode.dark : ThemeMode.light;
+  List<bool> SelectThemeNow() {
+    List<bool> isSelected = [false, false, false];
+    var themeMode = _themeMode;
+    for (int index = 0; index < isSelected.length; index++) {
+      if (themeMode == themes[index]) {
+        isSelected[index] = true;
+      } else {
+        isSelected[index] = false;
+      }
+    }
+    return isSelected;
+  }
+
+  ThemeMode get themeMode => _themeMode;
+
+  void setTheme(ThemeMode value) {
+    _themeMode = value;
     notifyListeners();
   }
 }

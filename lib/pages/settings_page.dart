@@ -1,8 +1,7 @@
+import 'package:autorization/widgets/toggle_button_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import 'package:autorization/components/settings/confirm_button.dart';
-import 'package:autorization/widgets/change_theme_button.dart';
 import 'package:autorization/widgets/toggle_button_language.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -35,7 +34,7 @@ class SettingsPageState extends State<SettingsPage> {
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
                   const TextLanguage(),
-                  const ToggleButtons1(),
+                  const ToggleButtonLanguage(),
                 ],
               ),
               Row(
@@ -53,7 +52,7 @@ class SettingsPageState extends State<SettingsPage> {
                             selectionColor: Colors.blue,
                             style: const TextStyle(fontWeight: FontWeight.bold),
                           )))),
-                  Flexible(child: ChangeThemeButtonWidget())
+                  Flexible(child: ToggleButtonTheme())
                 ],
               )
             ])),
