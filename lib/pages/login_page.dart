@@ -223,7 +223,7 @@ class PasswordWidget extends StatelessWidget {
               );
             }
           },
-          child: const Text('Submit'),
+          child: Text(AppLocalizations.of(context)!.pageLoginButtonLogin),
         ),
       ),
     );

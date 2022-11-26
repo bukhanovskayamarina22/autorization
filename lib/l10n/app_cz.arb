@@ -22,6 +22,14 @@
   "pageLoginButtonGoogle": "Přihlaste se pomocí účtu Google",
   
   "pageLoginButtonApple": "Přihlaste se pomocí účtu AppleID",
+  
+  "pageLoginPopupAuthTitle": "Ověření se nezdařilo",
+
+  "pageLoginPopupAuthText": "Chybný e-mail a/nebo heslo",
+
+  "pageLoginPopupRegTitle": "Registrace se nezdařila",
+
+  "pageLoginPopupRegText": "Uživatel již existuje",
 
   "pageSettingsTitle": "Nastavení",
 

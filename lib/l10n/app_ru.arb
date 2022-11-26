@@ -21,6 +21,14 @@
   
   "pageLoginButtonApple": "Вход с аккаунтом AppleID",
 
+  "pageLoginPopupAuthTitle": "Ошибка аутентификации",
+
+  "pageLoginPopupAuthText": "Неверный адрес электронной почты и/или пароль",
+
+  "pageLoginPopupRegTitle": "Регистрация не удалась",
+
+  "pageLoginPopupRegText": "Пользователь уже существует",
+
   "pageSettingsTitle": "Настройки",
 
   "pageSettingsTextLanguage": "Язык",
