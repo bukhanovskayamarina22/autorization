@@ -16,9 +16,15 @@
 
   "pageLoginPasswordError": "Password should be at least 8 symbols",
   "@pageLoginPasswordError": {},
+  
+  "pageLoginPasswordErrorNull": "Please enter some text",
+  "@pageLoginPasswordErrorNull": {},
 
-  "pageLoginButtonSubmit": "Submit",
-  "@pageLoginButtonSubmit": {},
+  "pageLoginButtonLogin": "Sign in",
+  "@pageLoginButtonLogin": {},
+  
+  "pageLoginButtonRegistr": "Register",
+  "@pageLoginButtonRegistr": {},
 
   "pageLoginButtonGoogle": "Login with Google",
   "@pageLoginButtonGoogle": {},
