@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 
 class ThemeProvider extends ChangeNotifier {
   //For new theme need add to enum in system file
@@ -31,15 +32,24 @@ class ThemeProvider extends ChangeNotifier {
 
 class MyThemes {
   static final darkTheme = ThemeData(
-      scaffoldBackgroundColor: Colors.grey.shade900,
-      primaryColor: Colors.black,
-      colorScheme: ColorScheme.dark(),
-      iconTheme: IconThemeData(color: Colors.purple.shade200, opacity: 0.8),
-      buttonTheme: ButtonThemeData(buttonColor: Colors.purple.shade200));
+    scaffoldBackgroundColor: Colors.grey.shade900,
+    primaryColor: Colors.black,
+    colorScheme: ColorScheme.dark(),
+    iconTheme: IconThemeData(color: Colors.purple.shade200, opacity: 0.8),
+    toggleButtonsTheme: ToggleButtonsThemeData(
+        selectedColor: Colors.black,
+        color: Colors.white,
+        fillColor: Color.fromRGBO(187, 134, 252, 1)),
+  );
 
   static final lightTheme = ThemeData(
       scaffoldBackgroundColor: Colors.white,
       primaryColor: Colors.white,
       colorScheme: ColorScheme.light(),
-      iconTheme: IconThemeData(color: Colors.red, opacity: 0.8));
+      iconTheme: IconThemeData(color: Colors.red, opacity: 0.8),
+      toggleButtonsTheme: ToggleButtonsThemeData(
+        selectedColor: Colors.white,
+        color: Colors.black,
+        fillColor: Color.fromRGBO(98, 0, 238, 1),
+      ));
 }

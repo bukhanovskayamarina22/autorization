@@ -1,4 +1,4 @@
-import 'package:autorization/provider/theme_provider_new.dart';
+import 'package:autorization/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,26 +20,25 @@ class _ToggleButtonThemeState extends State<ToggleButtonTheme> {
     print(isSelected);
 
     return Container(
-      color: Theme.of(context).iconTheme.color,
       child: ToggleButtons(
         isSelected: isSelected,
-        selectedColor: Colors.white,
-        color: Colors.black,
-        fillColor: Colors.purple.shade900,
+        selectedColor: Theme.of(context).toggleButtonsTheme.selectedColor,
+        color: Theme.of(context).toggleButtonsTheme.color,
+        fillColor: Theme.of(context).toggleButtonsTheme.fillColor,
         renderBorder: false,
-        splashColor: Colors.red,
+        // splashColor: Colors.red,
         highlightColor: Colors.orange,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(themesText[0], style: TextStyle(fontSize: 18)),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(themesText[1], style: TextStyle(fontSize: 18)),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(themesText[2], style: TextStyle(fontSize: 18)),
           ),
         ],
