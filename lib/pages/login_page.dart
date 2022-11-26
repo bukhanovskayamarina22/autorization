@@ -23,6 +23,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) => const Scaffold(
+        key: Key('_LoginPageState'),
         body: MyCustomForm(),
       );
 }
@@ -49,6 +50,7 @@ class MyCustomFormState extends State<MyCustomForm> {
   @override
   Widget build(BuildContext context) {
     return Center(
+      key: Key('MyCustomForm'),
       child: Form(
         key: _formKey,
         child: SizedBox(
@@ -179,6 +181,7 @@ class PasswordWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
+      
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: SizedBox(
         width: 350,

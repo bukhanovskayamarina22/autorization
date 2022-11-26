@@ -10,6 +10,7 @@ void main() {
   testWidgets('MyApp\'s Material All widget has been loaded successfully', (tester) async {
     // Create the widget by telling the tester to build it.
     await tester.pumpWidget(MyApp());
+    
 
     // Create the Finders.
     final myAppMaterialApp = find.byKey(ValueKey('MaterialAppKey'));
