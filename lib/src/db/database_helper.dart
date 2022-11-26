@@ -37,6 +37,15 @@ class DatabaseHelper {
     return "no such user";
   }
 
+  Future emailExists({required Box box, required String email}) async {
+    if (box.get(email) != null) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   Future addGoogleToken({required Box box, required String token}) async {
     box.add(token);
   }

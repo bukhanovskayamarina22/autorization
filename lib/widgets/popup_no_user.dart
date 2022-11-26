@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 
-class BuildPopupDialog extends StatelessWidget {
-  const BuildPopupDialog({super.key});
-
+class BuildPopupDialogNoUser extends StatelessWidget {
+  const BuildPopupDialogNoUser({super.key});
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       title: const Text('Authentication failed'),
-      // ignore: unnecessary_new
-      content: new Column(
+      content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const <Widget>[
-          Text("User does not exist"),
+          Text('No such user'),
         ],
       ),
       actions: <Widget>[
