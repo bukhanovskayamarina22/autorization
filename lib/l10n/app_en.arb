@@ -32,7 +32,16 @@
   "pageSettingsTextLanguage": "Language",
   "@pageSettingsTextLanguage": {},
 
-  "pageSettingsTextDarkTheme": "Theme",
-  "@pageSettingsTextDarkTheme": {}
+  "pageSettingsTextTheme": "Theme",
+  "@pageSettingsTextTheme": {},
+
+  "pageSettingsTextThemeSystem": "System",
+  "@pageSettingsTextThemeSystem": {},
+
+  "pageSettingsTextThemeDark": "Dark",
+  "@pageSettingsTextThemeDark": {},
+
+  "pageSettingsTextThemeLight": "Light",
+  "@pageSettingsTextThemeLight": {}
 
 }
