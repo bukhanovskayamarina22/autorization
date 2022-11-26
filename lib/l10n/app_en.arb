@@ -32,6 +32,18 @@
   "pageLoginButtonApple": "Login with AppleID",
   "@pageLoginButtonApple": {},
 
+  "pageLoginPopupAuthTitle": "Authentication failed",
+  "@pageLoginPopupAuth": {},
+
+  "pageLoginPopupAuthText": "Wrong email and/or password",
+  "@pageLoginPopupAuthText": {},
+
+  "pageLoginPopupRegTitle": "Registration failed",
+  "@pageLoginPopupAuthTitle": {},
+
+  "pageLoginPopupRegText": "User already exists",
+  "@pageLoginPopupRegText": {},
+
   "pageSettingsTitle": "Settings",
   "@pageSettingsTitle": {},
 

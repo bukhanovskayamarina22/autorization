@@ -1,5 +1,3 @@
-
-
 import 'package:autorization/pages/registered_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -38,26 +36,26 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) => MultiProvider(
-    providers: [
-      ChangeNotifierProvider(create: (context) => ThemeProvider()),
-      ChangeNotifierProvider(
-          create: (context) => LocaleProvider(const Locale('en', ''))),
-    ],
-    builder: (context, child) {
-      ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
-      LocaleProvider localeProvider =
-          Provider.of<LocaleProvider>(context);
-      return MaterialApp(
-        title: 'Kodeversitas',
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        locale: localeProvider.locale,
-        themeMode: themeProvider.themeMode,
-        theme: MyThemes.lightTheme,
-        darkTheme: MyThemes.darkTheme,
-        home: LoginPage(),
-        routes: routes,
-      );
-    });
+          providers: [
+            ChangeNotifierProvider(create: (context) => ThemeProvider()),
+            ChangeNotifierProvider(
+                create: (context) => LocaleProvider(const Locale('en', ''))),
+          ],
+          builder: (context, child) {
+            ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+            LocaleProvider localeProvider =
+                Provider.of<LocaleProvider>(context);
+            return MaterialApp(
+              title: 'Kodeversitas',
+              debugShowCheckedModeBanner: false,
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+              locale: localeProvider.locale,
+              themeMode: themeProvider.themeMode,
+              theme: MyThemes.lightTheme,
+              darkTheme: MyThemes.darkTheme,
+              home: LoginPage(),
+              routes: routes,
+            );
+          });
 }

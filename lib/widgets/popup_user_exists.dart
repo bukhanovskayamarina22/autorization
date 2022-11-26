@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BuildPopupDialogUserExists extends StatelessWidget {
   const BuildPopupDialogUserExists({super.key});
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Registration failed'),
+      title: Text(AppLocalizations.of(context)!.pageLoginPopupRegTitle),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const <Widget>[
-          Text('User already exists'),
+        children: <Widget>[
+          Text(AppLocalizations.of(context)!.pageLoginPopupRegText),
         ],
       ),
       actions: <Widget>[
