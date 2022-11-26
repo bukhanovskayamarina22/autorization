@@ -1,6 +1,7 @@
 import 'package:autorization/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ToggleButtonTheme extends StatefulWidget {
   const ToggleButtonTheme({super.key});
@@ -15,11 +16,15 @@ class _ToggleButtonThemeState extends State<ToggleButtonTheme> {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final List<ThemeMode> themes = themeProvider.themes;
-    final List<String> themesText = themeProvider.themesText;
+    final List<String> themesText = [
+      AppLocalizations.of(context)!.pageSettingsTextThemeSystem,
+      AppLocalizations.of(context)!.pageSettingsTextThemeDark,
+      AppLocalizations.of(context)!.pageSettingsTextThemeLight
+    ];
     List<bool> isSelected = themeProvider.SelectThemeNow();
-    print(isSelected);
 
-    return Container(
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
       child: ToggleButtons(
         isSelected: isSelected,
         selectedColor: Theme.of(context).toggleButtonsTheme.selectedColor,
@@ -44,7 +49,6 @@ class _ToggleButtonThemeState extends State<ToggleButtonTheme> {
         ],
         onPressed: (int newIndex) {
           setState(() {
-            print(newIndex);
             final themeProvider =
                 Provider.of<ThemeProvider>(context, listen: false);
             for (int index = 0; index < isSelected.length; index++) {

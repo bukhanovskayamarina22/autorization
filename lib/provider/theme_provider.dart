@@ -7,7 +7,6 @@ class ThemeProvider extends ChangeNotifier {
 
   ThemeMode _themeMode = ThemeMode.light;
   List<ThemeMode> themes = [ThemeMode.system, ThemeMode.dark, ThemeMode.light];
-  List<String> themesText = ['System', 'Dark', 'Light'];
 
   List<bool> SelectThemeNow() {
     List<bool> isSelected = [false, false, false];
