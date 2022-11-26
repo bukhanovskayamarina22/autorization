@@ -19,9 +19,15 @@
   
   "pageLoginButtonApple": "Přihlaste se pomocí účtu AppleID",
 
-  "pageSettingsTitle": "Settings",
+  "pageSettingsTitle": "Nastavení",
 
-  "pageSettingsTextLanguage": "Language",
+  "pageSettingsTextLanguage": "Jazyk",
   
-  "pageSettingsTextDarkTheme": "Theme"
+  "pageSettingsTextTheme": "Téma",
+
+  "pageSettingsTextThemeSystem": "Systém",
+
+  "pageSettingsTextThemeDark": "Temný",
+
+  "pageSettingsTextThemeLight": "Světlo"
 }

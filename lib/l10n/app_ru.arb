@@ -21,5 +21,11 @@
 
   "pageSettingsTextLanguage": "Язык",
 
-  "pageSettingsTextDarkTheme": "Тема"
+  "pageSettingsTextTheme": "Тема",
+
+  "pageSettingsTextThemeSystem": "Система",
+
+  "pageSettingsTextThemeDark": "Темная",
+
+  "pageSettingsTextThemeLight": "Светлая"
 }
