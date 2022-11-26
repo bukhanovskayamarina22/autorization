@@ -50,78 +50,78 @@ class MyCustomFormState extends State<MyCustomForm> {
   Widget build(BuildContext context) {
     return Center(
       child: Form(
-      key: _formKey,
-      child: SizedBox(
-        width: 350.0,
-        height: 600.0,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Align(
-              alignment: Alignment.bottomRight,
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const SettingsPage()));
-                  },
-                  icon: const Icon(CustomIcons.settings)),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: TextFormField(
-                controller: emailController,
-                decoration: InputDecoration(
-                  labelStyle: TextStyle(
-                    color: Theme.of(context).iconTheme.color,
-                  ),
-                  border: OutlineInputBorder(),
-                  label: Text(AppLocalizations.of(context)!
-                      .pageLoginUsername),
-                  hintText: AppLocalizations.of(context)!
-                      .pageLoginUsernameHelp,
-                ),
-                // The validator receives the text that the user has entered.
-                validator: (value) {
-                  if (value == null ||
-                      value.isEmpty ||
-                      !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                          .hasMatch(value)) {
-                    return AppLocalizations.of(context)!
-                        .pageLoginUsernameError;
-                  }
-                  return null;
-                },
+        key: _formKey,
+        child: SizedBox(
+          width: 350.0,
+          height: 600.0,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Align(
+                alignment: Alignment.bottomRight,
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SettingsPage()));
+                    },
+                    icon: const Icon(CustomIcons.settings)),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: TextFormField(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                controller: passwordController,
-                decoration: InputDecoration(
-                  labelStyle: TextStyle(
-                    color: Theme.of(context).iconTheme.color,
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: TextFormField(
+                  controller: emailController,
+                  decoration: InputDecoration(
+                    labelStyle: TextStyle(
+                      color: Theme.of(context).iconTheme.color,
+                    ),
+                    border: OutlineInputBorder(),
+                    label:
+                        Text(AppLocalizations.of(context)!.pageLoginUsername),
+                    hintText:
+                        AppLocalizations.of(context)!.pageLoginUsernameHelp,
                   ),
-                  border: const OutlineInputBorder(),
-                  label: Text(AppLocalizations.of(context)!
-                      .pageLoginPassword),
-                  hintText: AppLocalizations.of(context)!
-                      .pageLoginPasswordHelp,
+                  // The validator receives the text that the user has entered.
+                  validator: (value) {
+                    if (value == null ||
+                        value.isEmpty ||
+                        !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                            .hasMatch(value)) {
+                      return AppLocalizations.of(context)!
+                          .pageLoginUsernameError;
+                    }
+                    return null;
+                  },
                 ),
-                // The validator receives the text that the user has entered.
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  if (value.length < 8) {
-                    return AppLocalizations.of(context)!
-                        .pageLoginPasswordError;
-                  }
-                },
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  controller: passwordController,
+                  decoration: InputDecoration(
+                    labelStyle: TextStyle(
+                      color: Theme.of(context).iconTheme.color,
+                    ),
+                    border: const OutlineInputBorder(),
+                    label:
+                        Text(AppLocalizations.of(context)!.pageLoginPassword),
+                    hintText:
+                        AppLocalizations.of(context)!.pageLoginPasswordHelp,
+                  ),
+                  // The validator receives the text that the user has entered.
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    if (value.length < 8) {
+                      return AppLocalizations.of(context)!
+                          .pageLoginPasswordError;
+                    }
+                  },
+                ),
               ),
             ),
             Padding(
@@ -171,80 +171,79 @@ class MyCustomFormState extends State<MyCustomForm> {
                   child: const Text('Submit'),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: SizedBox(
-                width: 350,
-                child: MaterialButton(
-                  onPressed: () async {
-                    var databaseHelper = await DatabaseHelper();
-                    var opendb = await databaseHelper.openUserBox();
-                    var openBox = await databaseHelper.getUserBox();
-                    print(_formKey.currentState);
-                    // Validate returns true if the form is valid, or false otherwise.
-                    if (_formKey.currentState!.validate()) {
-                      var user = await User(
-                          email: emailController.text,
-                          password: passwordController.text);
-                      var emailExists = await databaseHelper
-                          .emailExists(box: openBox, email: user.email);
-                      if (emailExists != false) {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                            BuildPopupDialogUserExists(),
-                        );
-                        // ignore: use_build_context_synchronously
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: SizedBox(
+                  width: 350,
+                  child: MaterialButton(
+                    onPressed: () async {
+                      var databaseHelper = await DatabaseHelper();
+                      var opendb = await databaseHelper.openUserBox();
+                      var openBox = await databaseHelper.getUserBox();
+                      print(_formKey.currentState);
+                      // Validate returns true if the form is valid, or false otherwise.
+                      if (_formKey.currentState!.validate()) {
+                        var user = await User(
+                            email: emailController.text,
+                            password: passwordController.text);
+                        var emailExists = await databaseHelper.emailExists(
+                            box: openBox, email: user.email);
+                        if (emailExists != false) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) =>
+                                BuildPopupDialogUserExists(),
+                          );
+                          // ignore: use_build_context_synchronously
 
-                      } else {
-                        databaseHelper.addUser(box: openBox, user: user);
-                        Navigator.of(context).pushNamed(RegisteredPage.tag);
-                        // Navigator.of(context).pushNamed(NoSuchUser.tag);
+                        } else {
+                          databaseHelper.addUser(box: openBox, user: user);
+                          Navigator.of(context).pushNamed(RegisteredPage.tag);
+                          // Navigator.of(context).pushNamed(NoSuchUser.tag);
+                        }
+                        // If the form is valid, display a snackbar. In the real world,
+                        // you'd often call a server or save the information in a database.
+                        // ignore: use_build_context_synchronously
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Processing Data')),
+                        );
                       }
-                      // If the form is valid, display a snackbar. In the real world,
-                      // you'd often call a server or save the information in a database.
-                      // ignore: use_build_context_synchronously
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                            content: Text('Processing Data')),
-                      );
-                    }
-                  },
-                  child: const Text('Register'),
+                    },
+                    child: Text(
+                        AppLocalizations.of(context)!.pageLoginButtonRegistr),
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 70),
-              child: Container(
-                width: double.infinity,
-                color: Colors.transparent,
-                child: OutlinedButton(
-                  onPressed: () {
-                    signIn(context);
-                  },
-                  child: Text(AppLocalizations.of(context)!
-                      .pageLoginButtonGoogle),
+              Padding(
+                padding: EdgeInsets.only(top: 70),
+                child: Container(
+                  width: double.infinity,
+                  color: Colors.transparent,
+                  child: OutlinedButton(
+                    onPressed: () {
+                      signIn(context);
+                    },
+                    child: Text(
+                        AppLocalizations.of(context)!.pageLoginButtonGoogle),
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Container(
-                width: double.infinity,
-                color: Colors.transparent,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  child: Text(AppLocalizations.of(context)!
-                      .pageLoginButtonApple),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: Container(
+                  width: double.infinity,
+                  color: Colors.transparent,
+                  child: OutlinedButton(
+                    onPressed: () {},
+                    child: Text(
+                        AppLocalizations.of(context)!.pageLoginButtonApple),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
-    ),
     );
-  }     
+  }
 }

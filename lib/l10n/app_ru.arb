@@ -10,8 +10,12 @@
   "pageLoginPasswordHelp": "Не менее 8 символов",
   
   "pageLoginPasswordError": "Пароль должен быть не менее 8 символов",
+
+  "pageLoginPasswordErrorNull": "Пожалуйста, введите текст",
   
-  "pageLoginButtonSubmit": "Отправить",
+  "pageLoginButtonLogin": "Войти",
+
+  "pageLoginButtonRegistr": "Зарегистрироваться",
   
   "pageLoginButtonGoogle": "Вход с аккаунтом Google",
   
@@ -21,5 +25,11 @@
 
   "pageSettingsTextLanguage": "Язык",
 
-  "pageSettingsTextDarkTheme": "Тема"
+  "pageSettingsTextTheme": "Тема",
+
+  "pageSettingsTextThemeSystem": "Система",
+
+  "pageSettingsTextThemeDark": "Темная",
+
+  "pageSettingsTextThemeLight": "Светлая"
 }

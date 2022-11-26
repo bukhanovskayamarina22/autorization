@@ -12,16 +12,26 @@
   "pageLoginPasswordHelp": "Minimálně 8 znaků",
   
   "pageLoginPasswordError": "Heslo musí mít nejméně 8 znaků",
+
+  "pageLoginPasswordErrorNull": "Zadejte prosím text",
   
-  "pageLoginButtonSubmit": "Poslat",
+  "pageLoginButtonLogin": "Přihlásit se",
+
+  "pageLoginButtonRegistr": "Registrovat",
   
   "pageLoginButtonGoogle": "Přihlaste se pomocí účtu Google",
   
   "pageLoginButtonApple": "Přihlaste se pomocí účtu AppleID",
 
-  "pageSettingsTitle": "Settings",
+  "pageSettingsTitle": "Nastavení",
 
-  "pageSettingsTextLanguage": "Language",
+  "pageSettingsTextLanguage": "Jazyk",
   
-  "pageSettingsTextDarkTheme": "Theme"
+  "pageSettingsTextTheme": "Téma",
+
+  "pageSettingsTextThemeSystem": "Systém",
+
+  "pageSettingsTextThemeDark": "Temný",
+
+  "pageSettingsTextThemeLight": "Světlo"
 }

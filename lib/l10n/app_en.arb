@@ -16,9 +16,15 @@
 
   "pageLoginPasswordError": "Password should be at least 8 symbols",
   "@pageLoginPasswordError": {},
+  
+  "pageLoginPasswordErrorNull": "Please enter some text",
+  "@pageLoginPasswordErrorNull": {},
 
-  "pageLoginButtonSubmit": "Submit",
-  "@pageLoginButtonSubmit": {},
+  "pageLoginButtonLogin": "Sign in",
+  "@pageLoginButtonLogin": {},
+  
+  "pageLoginButtonRegistr": "Register",
+  "@pageLoginButtonRegistr": {},
 
   "pageLoginButtonGoogle": "Login with Google",
   "@pageLoginButtonGoogle": {},
@@ -32,7 +38,16 @@
   "pageSettingsTextLanguage": "Language",
   "@pageSettingsTextLanguage": {},
 
-  "pageSettingsTextDarkTheme": "Theme",
-  "@pageSettingsTextDarkTheme": {}
+  "pageSettingsTextTheme": "Theme",
+  "@pageSettingsTextTheme": {},
+
+  "pageSettingsTextThemeSystem": "System",
+  "@pageSettingsTextThemeSystem": {},
+
+  "pageSettingsTextThemeDark": "Dark",
+  "@pageSettingsTextThemeDark": {},
+
+  "pageSettingsTextThemeLight": "Light",
+  "@pageSettingsTextThemeLight": {}
 
 }
