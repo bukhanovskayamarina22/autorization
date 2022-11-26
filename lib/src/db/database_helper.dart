@@ -33,7 +33,7 @@ class DatabaseHelper {
 
   Future userExists({required Box box, required User user}) async {
     Map userMap = user.toMap();
-    if (box.get('${user.email}') != null) return '${user.password}';
+    if (box.get('${user.email}') == userMap) return '${user.password}';
     return "no such user";
   }
 
