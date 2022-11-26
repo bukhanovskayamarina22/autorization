@@ -1,5 +1,6 @@
 import 'package:autorization/pages/registered_page.dart';
 import 'package:autorization/widgets/popup_user_exists.dart';
+import 'package:autorization/widgets/popup_wrong_email_or_pwd.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:autorization/constants/controllers.dart';
@@ -122,46 +123,52 @@ class MyCustomFormState extends State<MyCustomForm> {
                   },
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: SizedBox(
-                  width: 350,
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      var databaseHelper = await DatabaseHelper();
-                      var opendb = await databaseHelper.openUserBox();
-                      var openBox = await databaseHelper.getUserBox();
-                      print(_formKey.currentState);
-                      // Validate returns true if the form is valid, or false otherwise.
-                      if (_formKey.currentState!.validate()) {
-                        var user = await User(
-                            email: emailController.text,
-                            password: passwordController.text);
-                        var userExistsString = await databaseHelper.userExists(
-                            box: openBox, user: user);
-                        if (userExistsString != "no such user") {
-                          // ignore: use_build_context_synchronously
-                          Navigator.of(context).pushNamed(HomePage.tag);
-                        } else {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) =>
-                                BuildPopupDialogNoUser(),
-                          );
-                          // Navigator.of(context).pushNamed(NoSuchUser.tag);
-                        }
-                        print(userExistsString);
-                        // If the form is valid, display a snackbar. In the real world,
-                        // you'd often call a server or save the information in a database.
-                        // ignore: use_build_context_synchronously
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Processing Data')),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: SizedBox(
+                width: 350,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    var databaseHelper = await DatabaseHelper();
+                    var opendb = await databaseHelper.openUserBox();
+                    var openBox = await databaseHelper.getUserBox();
+                    print(_formKey.currentState);
+                    // Validate returns true if the form is valid, or false otherwise.
+                    if (_formKey.currentState!.validate()) {
+                      var user = await User(
+                          email: emailController.text,
+                          password: passwordController.text);
+                      var userEmailAndPassswordCheck = await databaseHelper
+                        .userExists(box: openBox, user: user);
+                      var emailExistsCheck = await databaseHelper.emailExists(box: openBox, email: user.email);
+                      if (emailExistsCheck == false) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              BuildPopupDialogNoUser(),
                         );
                       }
-                    },
-                    child: Text(
-                        AppLocalizations.of(context)!.pageLoginButtonLogin),
-                  ),
+                      else if (userEmailAndPassswordCheck != "no such user") {
+                        Navigator.of(context).pushNamed(HomePage.tag);
+                        
+                      } else {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              BuildPopupDialogWrongEmailOrPwd(),
+                        );
+                      }
+                      // If the form is valid, display a snackbar. In the real world,
+                      // you'd often call a server or save the information in a database.
+                      // ignore: use_build_context_synchronously
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                            content: Text('Processing Data')),
+                      );
+                    }
+                  },
+                  child: const Text('Submit'),
                 ),
               ),
               Padding(
