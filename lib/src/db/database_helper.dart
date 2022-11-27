@@ -57,8 +57,13 @@ class DatabaseHelper {
     return 'user does not exist';
   }
 
-
-
+  Future deleteUser({required Box box, required String email}) async {
+    if (await emailExists(box: box, email: email) != false) {
+      box.delete(email);
+      return 'deleted';
+    }
+    return 'no such user in the box';
+  }
 }
 
 Future startBase() async {
