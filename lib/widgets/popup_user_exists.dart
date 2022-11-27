@@ -6,12 +6,14 @@ class BuildPopupDialogUserExists extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(AppLocalizations.of(context)!.pageLoginPopupRegTitle),
+      title: Text(AppLocalizations.of(context)!.pageLoginPopupRegTitle,
+          key: Key("Title user exist")),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(AppLocalizations.of(context)!.pageLoginPopupRegText),
+          Text(AppLocalizations.of(context)!.pageLoginPopupRegText,
+              key: Key("Body user exist")),
         ],
       ),
       actions: <Widget>[
