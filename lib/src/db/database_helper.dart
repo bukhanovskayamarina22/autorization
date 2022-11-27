@@ -26,9 +26,8 @@ class DatabaseHelper {
     return await Hive.box('google-tokens');
   }
 
-  Future addUser({required Box box, required User user}) async {
-    Map userMap = user.toMap();
-    box.put('${user.email}', userMap);
+  Future addUser({required Box box, required Map user}) async {
+    box.put('${user['email']}', user);
   }
 
   Future userExists({required Box box, required User user}) async {

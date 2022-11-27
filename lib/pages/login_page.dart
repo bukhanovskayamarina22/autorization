@@ -253,9 +253,9 @@ class ButtonSignIn extends StatelessWidget {
             if (_formKey.currentState!.validate()) {
               var user = await User(
                   email: emailController.text,
-                  password: passwordController.text);
+                  password: passwordController.text).toMap();
               var emailExists = await databaseHelper.emailExists(
-                  box: openBox, email: user.email);
+                  box: openBox, email: user['email']);
               if (emailExists != false) {
                 showDialog(
                   context: context,
