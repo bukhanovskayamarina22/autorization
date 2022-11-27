@@ -6,12 +6,15 @@ class BuildPopupDialogNoUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Authentication failed'),
+      title: Text(
+        'Authentication failed',
+        key: Key("Title text"),
+      ),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const <Widget>[
-          Text('No such user'),
+          Text('No such user', key: Key("Text body popup no user")),
         ],
       ),
       actions: <Widget>[

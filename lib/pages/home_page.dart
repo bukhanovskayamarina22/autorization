@@ -8,6 +8,7 @@ class HomePage extends StatelessWidget {
     // ignore: prefer_const_constructors
     final text = Text(
       'Logged in',
+      key: Key("Text in center page"),
       style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
     );
 
