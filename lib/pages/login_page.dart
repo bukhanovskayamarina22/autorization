@@ -96,9 +96,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                   },
                 ),
               ),
-              UserWidget(),
-              PasswordWidget(formKey: _formKey),
-              ButtonSignIn(formKey: _formKey),
+              PasswordWidget(),
+              SubmitButton(formKey: _formKey),
+              ButtonSignUp(formKey: _formKey),
               Padding(
                 padding: EdgeInsets.only(top: 70),
                 child: Container(
@@ -135,8 +135,8 @@ class MyCustomFormState extends State<MyCustomForm> {
   }
 }
 
-class UserWidget extends StatelessWidget {
-  const UserWidget({
+class PasswordWidget extends StatelessWidget {
+  const PasswordWidget({
     Key? key,
   }) : super(key: key);
 
@@ -170,8 +170,8 @@ class UserWidget extends StatelessWidget {
   }
 }
 
-class PasswordWidget extends StatelessWidget {
-  const PasswordWidget({
+class SubmitButton extends StatelessWidget {
+  const SubmitButton({
     Key? key,
     required GlobalKey<FormState> formKey,
   })  : _formKey = formKey,
@@ -228,8 +228,8 @@ class PasswordWidget extends StatelessWidget {
   }
 }
 
-class ButtonSignIn extends StatelessWidget {
-  const ButtonSignIn({
+class ButtonSignUp extends StatelessWidget {
+  const ButtonSignUp({
     Key? key,
     required GlobalKey<FormState> formKey,
   })  : _formKey = formKey,
