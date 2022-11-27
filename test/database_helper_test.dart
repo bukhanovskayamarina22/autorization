@@ -18,41 +18,41 @@ void main() {
     // expect(openBox.get('${user.email}'), {'email': '${user.email}', 'password': '${user.password}'});
   });
 
-  test('checks if user exists in database by email', () async {
-    var user = User(email: 'name@example.com', password: 'asdfasdf');
-    await Hive.initFlutter();
-    var databaseHelper = await DatabaseHelper();
-    Box openBox = await databaseHelper.getUserBox();
-    var userMap = user.toMap();
+  // test('checks if user exists in database by email', () async {
+  //   var user = User(email: 'name@example.com', password: 'asdfasdf');
+  //   await Hive.initFlutter();
+  //   var databaseHelper = await DatabaseHelper();
+  //   Box openBox = await databaseHelper.getUserBox();
+  //   var userMap = user.toMap();
 
-    var r = await databaseHelper.userExists(box: openBox, user: user);
+  //   var r = await databaseHelper.userExists(box: openBox, user: user);
 
-    expect(r, user.password);
-  });
+  //   expect(r, user.password);
+  // });
 
-    test('checks if user exists in database by email', () async {
-    var user = User(email: 'nam@example.com', password: 'asdfasdf');
-    await Hive.initFlutter();
-    var databaseHelper = await DatabaseHelper();
-    var opendb = await databaseHelper.openUserBox();
-    var openBox = await databaseHelper.getUserBox();
+  //   test('checks if user exists in database by email', () async {
+  //   var user = User(email: 'nam@example.com', password: 'asdfasdf');
+  //   await Hive.initFlutter();
+  //   var databaseHelper = await DatabaseHelper();
+  //   var opendb = await databaseHelper.openUserBox();
+  //   var openBox = await databaseHelper.getUserBox();
 
-    var r = await databaseHelper.userExists(box: openBox, user: user);
+  //   var r = await databaseHelper.userExists(box: openBox, user: user);
 
-    expect(r, 'no such user');
-  });
+  //   expect(r, 'no such user');
+  // });
 
-  test('auto increment box.add', () async {
-    var token = 'a';
-    await Hive.initFlutter();
-    var databaseHelper = await DatabaseHelper();
-    var createBox = await databaseHelper.openGoogleBox();
-    var openBox = await databaseHelper.getGoogleBox();
+  // test('auto increment box.add', () async {
+  //   var token = 'a';
+  //   await Hive.initFlutter();
+  //   var databaseHelper = await DatabaseHelper();
+  //   var createBox = await databaseHelper.openGoogleBox();
+  //   var openBox = await databaseHelper.getGoogleBox();
 
-    databaseHelper.addGoogleToken(box: openBox, token: token);
+  //   databaseHelper.addGoogleToken(box: openBox, token: token);
 
-    expect(openBox.get(0), token);
-  });
+  //   expect(openBox.get(0), token);
+  // });
 
   test('box "users" is opened because it already exists', () async {
     await Hive.initFlutter();

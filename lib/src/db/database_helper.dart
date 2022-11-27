@@ -27,23 +27,36 @@ class DatabaseHelper {
   }
 
   Future addUser({required Box box, required Map user}) async {
-    box.put('${user['email']}', user);
+    await box.put('${user['email']}', user);
+    return true;
   }
 
   Future userExists({required Box box, required Map user}) async {
-    if (box.get(user['email']) == user) {
+    if (await box.get(user['email']) == user) {
       return true;
     }
     return false;
   }
 
   Future emailExists({required Box box, required String email}) async {
-    if (box.get(email) != null) {
+    if (await box.get(email) != null) {
       return true;
     } else {
       return false;
     }
   }
+
+  Future updateUserData({required Box box, required Map user, required String parameterToUpdate, required newParameterValue}) async {
+    if(await emailExists(box: box, email: user['email']) != false) {
+      if(user.containsKey(parameterToUpdate) != false) {
+        user[parameterToUpdate] = newParameterValue;
+        box.put(user['email'], user);
+        return 'value of $parameterToUpdate parameter now equals to $newParameterValue';
+      } return 'no such parameter';
+    }
+    return 'user does not exist';
+  }
+
 
 
 }
