@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:http/http.dart' as http;
 
-//Выловить отсюда email и токен
-Future<bool> signIn() async {
+
+Future signIn() async {
   AccessCredentials client = await GoogleAuthapi();
   if (client == null) {
     print("Hihihihi");
@@ -16,7 +16,7 @@ Future<bool> signIn() async {
   Map<String, String> tokenMap = {'Authorization': 'Bearer $tokenUser'};
   var clientInfoJson = await http.get(endPoint, headers: tokenMap);
   print(clientInfoJson.body);
-  return true;
+  return clientInfoJson.body;
 }
 
 
