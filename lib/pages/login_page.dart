@@ -194,17 +194,17 @@ class PasswordWidget extends StatelessWidget {
             if (_formKey.currentState!.validate()) {
               var user = await User(
                   email: emailController.text,
-                  password: passwordController.text);
+                  password: passwordController.text).toMap();
               var userEmailAndPassswordCheck =
                   await databaseHelper.userExists(box: openBox, user: user);
               var emailExistsCheck = await databaseHelper.emailExists(
-                  box: openBox, email: user.email);
+                  box: openBox, email: user['email']);
               if (emailExistsCheck == false) {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) => BuildPopupDialogNoUser(),
                 );
-              } else if (userEmailAndPassswordCheck != "no such user") {
+              } else if (userEmailAndPassswordCheck != false) {
                 Navigator.of(context).pushNamed(HomePage.tag);
               } else {
                 showDialog(
