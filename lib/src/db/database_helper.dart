@@ -30,12 +30,11 @@ class DatabaseHelper {
     box.put('${user['email']}', user);
   }
 
-  Future userExists({required Box box, required User user}) async {
-    Map userMap = user.toMap();
-    if (box.get('${user.email}').toString() == userMap.toString()) {
-      return '${user.password}';
+  Future userExists({required Box box, required Map user}) async {
+    if (box.get(user['email']) == user) {
+      return true;
     }
-    return "no such user";
+    return false;
   }
 
   Future emailExists({required Box box, required String email}) async {
@@ -46,9 +45,7 @@ class DatabaseHelper {
     }
   }
 
-  Future addGoogleToken({required Box box, required String token}) async {
-    box.add(token);
-  }
+
 }
 
 Future startBase() async {
