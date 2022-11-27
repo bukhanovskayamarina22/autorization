@@ -1,18 +1,18 @@
-import 'package:autorization/pages/registered_page.dart';
-import 'package:autorization/src/google_user.dart';
-import 'package:autorization/widgets/popup_user_exists.dart';
-import 'package:autorization/widgets/popup_wrong_email_or_pwd.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:hive/hive.dart';
+
 import 'package:autorization/constants/controllers.dart';
 import 'package:autorization/pages/settings_page.dart';
 import 'package:autorization/src/custom_icons.dart';
 import 'package:autorization/src/google_login.dart';
+import 'package:autorization/src/google_user.dart';
 import 'package:autorization/src/user.dart';
-import 'package:hive/hive.dart';
+import 'package:autorization/widgets/popup_user_exists.dart';
+import 'package:autorization/widgets/popup_wrong_email_or_pwd.dart';
 
 import '../src/db/database_helper.dart';
-
 import '../widgets/popup_no_user.dart';
 import 'home_page.dart';
 
