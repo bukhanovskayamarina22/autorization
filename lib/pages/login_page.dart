@@ -122,7 +122,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                         } 
                         Navigator.push(context,
                         MaterialPageRoute(
-                          builder: (context) => HomePage(text: 'Hello'),
+                          builder: (context) => HomePage(text: 'Hello, ${user['email']}'),
                         ));                
                       }
                     },
@@ -285,7 +285,7 @@ class ButtonSignUp extends StatelessWidget {
                 databaseHelper.addUser(box: openBox, user: user);
                 Navigator.push(context,
                 MaterialPageRoute(
-                  builder: (context) => HomePage(text: 'Hello',),
+                  builder: (context) => HomePage(text: 'Hello, ${user['email']}'),
                 )); 
               }
               // If the form is valid, display a snackbar. In the real world,
