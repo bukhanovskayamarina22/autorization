@@ -7,7 +7,6 @@ import '../lib/src/db/database_helper.dart';
 
 void main() {
 
-
   test('box "users" is opened because it already exists', () async {
     await Hive.initFlutter();
     var databaseHelper = await DatabaseHelper();

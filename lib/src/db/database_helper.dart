@@ -26,29 +26,43 @@ class DatabaseHelper {
     return await Hive.box('google-tokens');
   }
 
-  Future addUser({required Box box, required User user}) async {
-    Map userMap = user.toMap();
-    box.put('${user.email}', userMap);
+  Future addUser({required Box box, required Map user}) async {
+    await box.put('${user['email']}', user);
+    return true;
   }
 
-  Future userExists({required Box box, required User user}) async {
-    Map userMap = user.toMap();
-    if (box.get('${user.email}').toString() == userMap.toString()) {
-      return '${user.password}';
+  Future userExists({required Box box, required Map user}) async {
+    if (await box.get(user['email']) == user) {
+      return true;
     }
-    return "no such user";
+    return false;
   }
 
   Future emailExists({required Box box, required String email}) async {
-    if (box.get(email) != null) {
+    if (await box.get(email) != null) {
       return true;
     } else {
       return false;
     }
   }
 
-  Future addGoogleToken({required Box box, required String token}) async {
-    box.add(token);
+  Future updateUserData({required Box box, required Map user, required String parameterToUpdate, required newParameterValue}) async {
+    if(await emailExists(box: box, email: user['email']) != false) {
+      if(user.containsKey(parameterToUpdate) != false) {
+        user[parameterToUpdate] = newParameterValue;
+        box.put(user['email'], user);
+        return 'value of $parameterToUpdate parameter now equals to $newParameterValue';
+      } return 'no such parameter';
+    }
+    return 'user does not exist';
+  }
+
+  Future deleteUser({required Box box, required String email}) async {
+    if (await emailExists(box: box, email: email) != false) {
+      box.delete(email);
+      return 'deleted';
+    }
+    return 'no such user in the box';
   }
 }
 

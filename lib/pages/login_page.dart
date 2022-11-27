@@ -1,4 +1,5 @@
 import 'package:autorization/pages/registered_page.dart';
+import 'package:autorization/src/google_user.dart';
 import 'package:autorization/widgets/popup_user_exists.dart';
 import 'package:autorization/widgets/popup_wrong_email_or_pwd.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:autorization/pages/settings_page.dart';
 import 'package:autorization/src/custom_icons.dart';
 import 'package:autorization/src/google_login.dart';
 import 'package:autorization/src/user.dart';
+import 'package:hive/hive.dart';
 
 import '../src/db/database_helper.dart';
 
@@ -58,6 +60,7 @@ class MyCustomFormState extends State<MyCustomForm> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              //Settings
               Align(
                 alignment: Alignment.bottomRight,
                 child: IconButton(
@@ -69,6 +72,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     },
                     icon: const Icon(CustomIcons.settings)),
               ),
+              //Email
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: TextFormField(
@@ -96,9 +100,10 @@ class MyCustomFormState extends State<MyCustomForm> {
                   },
                 ),
               ),
-              UserWidget(),
-              PasswordWidget(formKey: _formKey),
-              ButtonSignIn(formKey: _formKey),
+              PasswordWidget(),
+              SubmitButton(formKey: _formKey),
+              ButtonSignUp(formKey: _formKey),
+              //Google 
               Padding(
                 padding: EdgeInsets.only(top: 70),
                 child: Container(
@@ -106,8 +111,16 @@ class MyCustomFormState extends State<MyCustomForm> {
                   color: Colors.transparent,
                   child: OutlinedButton(
                     onPressed: () async {
-                      if (await signIn()) {
-                        Navigator.of(context).pushNamed(HomePage.tag);
+                      var googleUserLoginData = await signIn();
+                      Map user = GoogleUser(responceBody: googleUserLoginData).toMap();
+                      if (googleUserLoginData != false) {
+                        DatabaseHelper databaseHelper = await DatabaseHelper();
+                        var getBox = await databaseHelper.openGoogleBox();
+                        Box openBox = await databaseHelper.getGoogleBox();
+                        if(await databaseHelper.emailExists(box: openBox, email: user['email']) == false) {
+                          databaseHelper.addUser(box: openBox, user: user);
+                        } 
+                        Navigator.of(context).pushNamed(HomePage.tag);                    
                       }
                     },
                     child: Text(
@@ -115,6 +128,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   ),
                 ),
               ),
+              //Apple
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Container(
@@ -135,8 +149,8 @@ class MyCustomFormState extends State<MyCustomForm> {
   }
 }
 
-class UserWidget extends StatelessWidget {
-  const UserWidget({
+class PasswordWidget extends StatelessWidget {
+  const PasswordWidget({
     Key? key,
   }) : super(key: key);
 
@@ -170,8 +184,8 @@ class UserWidget extends StatelessWidget {
   }
 }
 
-class PasswordWidget extends StatelessWidget {
-  const PasswordWidget({
+class SubmitButton extends StatelessWidget {
+  const SubmitButton({
     Key? key,
     required GlobalKey<FormState> formKey,
   })  : _formKey = formKey,
@@ -194,17 +208,17 @@ class PasswordWidget extends StatelessWidget {
             if (_formKey.currentState!.validate()) {
               var user = await User(
                   email: emailController.text,
-                  password: passwordController.text);
+                  password: passwordController.text).toMap();
               var userEmailAndPassswordCheck =
                   await databaseHelper.userExists(box: openBox, user: user);
               var emailExistsCheck = await databaseHelper.emailExists(
-                  box: openBox, email: user.email);
+                  box: openBox, email: user['email']);
               if (emailExistsCheck == false) {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) => BuildPopupDialogNoUser(),
                 );
-              } else if (userEmailAndPassswordCheck != "no such user") {
+              } else if (userEmailAndPassswordCheck != false) {
                 Navigator.of(context).pushNamed(HomePage.tag);
               } else {
                 showDialog(
@@ -228,8 +242,8 @@ class PasswordWidget extends StatelessWidget {
   }
 }
 
-class ButtonSignIn extends StatelessWidget {
-  const ButtonSignIn({
+class ButtonSignUp extends StatelessWidget {
+  const ButtonSignUp({
     Key? key,
     required GlobalKey<FormState> formKey,
   })  : _formKey = formKey,
@@ -253,9 +267,9 @@ class ButtonSignIn extends StatelessWidget {
             if (_formKey.currentState!.validate()) {
               var user = await User(
                   email: emailController.text,
-                  password: passwordController.text);
+                  password: passwordController.text).toMap();
               var emailExists = await databaseHelper.emailExists(
-                  box: openBox, email: user.email);
+                  box: openBox, email: user['email']);
               if (emailExists != false) {
                 showDialog(
                   context: context,
