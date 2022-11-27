@@ -5,6 +5,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() {
+<<<<<<< Updated upstream:test/src/db/database_helper_test.dart
   test('adds new User to database', () async {
     var user = User(email: 'johndoe@gmail.com', password: 'password');
     await Hive.initFlutter();
@@ -53,6 +54,8 @@ void main() {
 
     expect(openBox.get(0), token);
   });
+=======
+>>>>>>> Stashed changes:test/database_helper_test.dart
 
   test('box "users" is opened because it already exists', () async {
     await Hive.initFlutter();
