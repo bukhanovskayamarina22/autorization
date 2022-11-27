@@ -120,7 +120,10 @@ class MyCustomFormState extends State<MyCustomForm> {
                         if(await databaseHelper.emailExists(box: openBox, email: user['email']) == false) {
                           databaseHelper.addUser(box: openBox, user: user);
                         } 
-                        Navigator.of(context).pushNamed(HomePage.tag);                    
+                        Navigator.push(context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(text: 'Hello'),
+                        ));                
                       }
                     },
                     child: Text(
@@ -209,17 +212,17 @@ class SubmitButton extends StatelessWidget {
               var user = await User(
                   email: emailController.text,
                   password: passwordController.text).toMap();
-              var userEmailAndPassswordCheck =
-                  await databaseHelper.userExists(box: openBox, user: user);
-              var emailExistsCheck = await databaseHelper.emailExists(
-                  box: openBox, email: user['email']);
-              if (emailExistsCheck == false) {
+
+              if (await databaseHelper.emailExists(box: openBox, email: user['email']) == false) {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) => BuildPopupDialogNoUser(),
                 );
-              } else if (userEmailAndPassswordCheck != false) {
-                Navigator.of(context).pushNamed(HomePage.tag);
+              } else if (await databaseHelper.userExists(box: openBox, user: user) != false) {
+                  Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => HomePage(text: 'Hello, ${user['email']}'),
+                    )); 
               } else {
                 showDialog(
                   context: context,
@@ -280,8 +283,10 @@ class ButtonSignUp extends StatelessWidget {
 
               } else {
                 databaseHelper.addUser(box: openBox, user: user);
-                Navigator.of(context).pushNamed(RegisteredPage.tag);
-                // Navigator.of(context).pushNamed(NoSuchUser.tag);
+                Navigator.push(context,
+                MaterialPageRoute(
+                  builder: (context) => HomePage(text: 'Hello',),
+                )); 
               }
               // If the form is valid, display a snackbar. In the real world,
               // you'd often call a server or save the information in a database.

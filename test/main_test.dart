@@ -11,7 +11,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 void main() {
   final routes = <String, WidgetBuilder>{
     // LoginPage.tag: (context) => LoginPage(),
-    HomePage.tag: (context) => HomePage(),
   };
 
   Widget createWidgetUnderTest() {

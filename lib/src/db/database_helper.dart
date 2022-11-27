@@ -32,7 +32,7 @@ class DatabaseHelper {
   }
 
   Future userExists({required Box box, required Map user}) async {
-    if (await box.get(user['email']) == user) {
+    if (await box.get(user['email']).toString() == user.toString()) {
       return true;
     }
     return false;

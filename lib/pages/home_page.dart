@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  static String tag = 'home-page';
+  final String text;
+  HomePage({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
     final text = Text(
-      'Logged in',
+      this.text,
       key: Key("Text in center page"),
       style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
     );

@@ -30,7 +30,6 @@ class _MyAppState extends State<MyApp> {
 
   final routes = <String, WidgetBuilder>{
     // LoginPage.tag: (context) => LoginPage(),
-    HomePage.tag: (context) => HomePage(),
     RegisteredPage.tag: (context) => RegisteredPage(),
   };
 
