@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:http/http.dart' as http;
 
-
-Future signIn() async {
+Future GoogleLogin() async {
   AccessCredentials client = await GoogleAuthapi();
   if (client == null) {
-    print("Hihihihi");
     return false;
   }
   var tokenUser = client.accessToken.data;

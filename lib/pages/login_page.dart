@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hive/hive.dart';
@@ -103,7 +102,7 @@ class MyCustomFormState extends State<MyCustomForm> {
               PasswordWidget(),
               SubmitButton(formKey: _formKey),
               ButtonSignUp(formKey: _formKey),
-              //Google 
+              //Google
               Padding(
                 padding: EdgeInsets.only(top: 70),
                 child: Container(
@@ -111,19 +110,24 @@ class MyCustomFormState extends State<MyCustomForm> {
                   color: Colors.transparent,
                   child: OutlinedButton(
                     onPressed: () async {
-                      var googleUserLoginData = await signIn();
-                      Map user = GoogleUser(responceBody: googleUserLoginData).toMap();
+                      var googleUserLoginData = await GoogleLogin();
+                      Map user =
+                          GoogleUser(responceBody: googleUserLoginData).toMap();
                       if (googleUserLoginData != false) {
                         DatabaseHelper databaseHelper = await DatabaseHelper();
                         var getBox = await databaseHelper.openGoogleBox();
                         Box openBox = await databaseHelper.getGoogleBox();
-                        if(await databaseHelper.emailExists(box: openBox, email: user['email']) == false) {
+                        if (await databaseHelper.emailExists(
+                                box: openBox, email: user['email']) ==
+                            false) {
                           databaseHelper.addUser(box: openBox, user: user);
-                        } 
-                        Navigator.push(context,
-                        MaterialPageRoute(
-                          builder: (context) => HomePage(text: 'Hello, ${user['email']}'),
-                        ));                
+                        }
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  HomePage(text: 'Hello, ${user['email']}'),
+                            ));
                       }
                     },
                     child: Text(
@@ -210,19 +214,26 @@ class SubmitButton extends StatelessWidget {
             // Validate returns true if the form is valid, or false otherwise.
             if (_formKey.currentState!.validate()) {
               var user = await User(
-                  email: emailController.text,
-                  password: passwordController.text).toMap();
+                      email: emailController.text,
+                      password: passwordController.text)
+                  .toMap();
 
-              if (await databaseHelper.emailExists(box: openBox, email: user['email']) == false) {
+              if (await databaseHelper.emailExists(
+                      box: openBox, email: user['email']) ==
+                  false) {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) => BuildPopupDialogNoUser(),
                 );
-              } else if (await databaseHelper.userExists(box: openBox, user: user) != false) {
-                  Navigator.push(context,
+              } else if (await databaseHelper.userExists(
+                      box: openBox, user: user) !=
+                  false) {
+                Navigator.push(
+                    context,
                     MaterialPageRoute(
-                      builder: (context) => HomePage(text: 'Hello, ${user['email']}'),
-                    )); 
+                      builder: (context) =>
+                          HomePage(text: 'Hello, ${user['email']}'),
+                    ));
               } else {
                 showDialog(
                   context: context,
@@ -269,8 +280,9 @@ class ButtonSignUp extends StatelessWidget {
             // Validate returns true if the form is valid, or false otherwise.
             if (_formKey.currentState!.validate()) {
               var user = await User(
-                  email: emailController.text,
-                  password: passwordController.text).toMap();
+                      email: emailController.text,
+                      password: passwordController.text)
+                  .toMap();
               var emailExists = await databaseHelper.emailExists(
                   box: openBox, email: user['email']);
               if (emailExists != false) {
@@ -283,10 +295,12 @@ class ButtonSignUp extends StatelessWidget {
 
               } else {
                 databaseHelper.addUser(box: openBox, user: user);
-                Navigator.push(context,
-                MaterialPageRoute(
-                  builder: (context) => HomePage(text: 'Hello, ${user['email']}'),
-                )); 
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          HomePage(text: 'Hello, ${user['email']}'),
+                    ));
               }
               // If the form is valid, display a snackbar. In the real world,
               // you'd often call a server or save the information in a database.
