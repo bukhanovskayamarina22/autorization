@@ -47,14 +47,14 @@ void main() {
       await tester.tap(button);
       await tester.pump();
       expect(find.byKey(ValueKey("Title user exist")), findsOneWidget);
-      expect(find.text('Authentication failed'), findsOneWidget);
+      expect(find.text('Title wrong email or pwd'), findsOneWidget);
     });
     testWidgets("Check content", (WidgetTester tester) async {
       await tester.pumpWidget(createWidgetUnderTest());
       var button = find.text("PopupCheck");
       await tester.tap(button);
       await tester.pump();
-      expect(find.byKey(ValueKey("Body user exist")), findsOneWidget);
+      expect(find.byKey(ValueKey("Body wrong email or pwd")), findsOneWidget);
       expect(find.text('Wrong email and/or password'), findsOneWidget);
     });
   });
