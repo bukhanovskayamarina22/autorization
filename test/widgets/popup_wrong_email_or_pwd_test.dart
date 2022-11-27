@@ -46,7 +46,7 @@ void main() {
       var button = find.text("PopupCheck");
       await tester.tap(button);
       await tester.pump();
-      expect(find.byKey(ValueKey("Title user exist")), findsOneWidget);
+      expect(find.byKey(ValueKey("Title wrong email or pwd")), findsOneWidget);
       expect(find.text('Title wrong email or pwd'), findsOneWidget);
     });
     testWidgets("Check content", (WidgetTester tester) async {
