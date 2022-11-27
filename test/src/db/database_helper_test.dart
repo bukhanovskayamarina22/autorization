@@ -1,9 +1,8 @@
+import 'package:autorization/src/db/database_helper.dart';
 import 'package:autorization/src/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
-import '../lib/src/db/database_helper.dart';
 
 void main() {
   test('adds new User to database', () async {
@@ -12,10 +11,11 @@ void main() {
     var databaseHelper = await DatabaseHelper();
     var opendb = await databaseHelper.openUserBox();
     var openBox = await databaseHelper.getUserBox();
-    
+
     databaseHelper.addUser(box: openBox, user: user);
 
-    expect(openBox.get('${user.email}'), {'email': '${user.email}', 'password': '${user.password}'});
+    expect(openBox.get('${user.email}'),
+        {'email': '${user.email}', 'password': '${user.password}'});
   });
 
   test('checks if user exists in database by email', () async {
@@ -30,7 +30,7 @@ void main() {
     expect(r, user.password);
   });
 
-    test('checks if user exists in database by email', () async {
+  test('checks if user exists in database by email', () async {
     var user = User(email: 'nam@example.com', password: 'asdfasdf');
     await Hive.initFlutter();
     var databaseHelper = await DatabaseHelper();

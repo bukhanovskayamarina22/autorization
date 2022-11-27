@@ -15,46 +15,50 @@ class SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.pageSettingsTitle),
+        title: Text(AppLocalizations.of(context)!.pageSettingsTitle,
+            key: const Key("AppBar Text")),
       ),
-      body: Container(
-        alignment: Alignment.topCenter,
-        margin: EdgeInsets.fromLTRB(65, 20, 0, 0),
-        child: Column(children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            // ignore: prefer_const_literals_to_create_immutables
-            children: [
-              const TextLanguage(),
-              // ignore: prefer_const_constructors
-              const Flexible(child: ToggleButtonLanguage()),
-            ],
-          ),
-          // ignore: prefer_const_constructors
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Flexible(
-                child: SizedBox(
-                  width: 100,
-                  height: 40,
-                  child: FittedBox(
-                    child: Text(
-                      AppLocalizations.of(context)!.pageSettingsTextTheme,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-              ),
-              Flexible(child: ToggleButtonTheme())
-            ],
-          )
-        ]),
-      ),
+      body: BodySettingsPage(),
+    );
+  }
+}
+
+class BodySettingsPage extends StatelessWidget {
+  const BodySettingsPage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      key: const Key("Conteiner for body SettingsPage"),
+      alignment: Alignment.topCenter,
+      margin: EdgeInsets.fromLTRB(65, 20, 0, 0),
+      child: Column(key: const Key("Column Settings"), children: [
+        LanguageSettings(),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+        ),
+        ThemeSettings()
+      ]),
+    );
+  }
+}
+
+class LanguageSettings extends StatelessWidget {
+  const LanguageSettings({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      key: const Key("Row for Languages"),
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const TextLanguage(),
+        const Flexible(child: ToggleButtonLanguage()),
+      ],
     );
   }
 }
@@ -73,10 +77,50 @@ class TextLanguage extends StatelessWidget {
           child: FittedBox(
               child: Text(
             AppLocalizations.of(context)!.pageSettingsTextLanguage,
+            key: Key("Field for TextLanguage"),
             textAlign: TextAlign.center,
             selectionColor: Theme.of(context).iconTheme.color,
             style: const TextStyle(fontWeight: FontWeight.bold),
           ))),
+    );
+  }
+}
+
+class ThemeSettings extends StatelessWidget {
+  const ThemeSettings({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      key: Key("Row for themes"),
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [ThemeText(), Flexible(child: ToggleButtonTheme())],
+    );
+  }
+}
+
+class ThemeText extends StatelessWidget {
+  const ThemeText({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Flexible(
+      child: SizedBox(
+        width: 100,
+        height: 40,
+        child: FittedBox(
+          child: Text(
+            AppLocalizations.of(context)!.pageSettingsTextTheme,
+            key: const Key("Field for TextTheme"),
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
+      ),
     );
   }
 }
