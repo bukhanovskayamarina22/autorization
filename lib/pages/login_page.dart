@@ -145,6 +145,7 @@ class UserWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(
+        obscureText: true,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         controller: passwordController,
         decoration: InputDecoration(
