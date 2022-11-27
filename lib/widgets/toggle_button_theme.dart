@@ -36,15 +36,18 @@ class _ToggleButtonThemeState extends State<ToggleButtonTheme> {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text(themesText[0], style: TextStyle(fontSize: 18)),
+            child: Text(themesText[0],
+                key: const Key("First child"), style: TextStyle(fontSize: 18)),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text(themesText[1], style: TextStyle(fontSize: 18)),
+            child: Text(themesText[1],
+                key: const Key("Second child"), style: TextStyle(fontSize: 18)),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text(themesText[2], style: TextStyle(fontSize: 18)),
+            child: Text(themesText[2],
+                key: const Key("Third child"), style: TextStyle(fontSize: 18)),
           ),
         ],
         onPressed: (int newIndex) {

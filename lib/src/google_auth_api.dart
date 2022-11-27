@@ -17,6 +17,7 @@ Future<AccessCredentials> GoogleAuthapi() async {
       _prompt,
     );
   } finally {
+    print("HAHA");
     client.close();
   }
 }

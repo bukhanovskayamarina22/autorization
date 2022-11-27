@@ -6,12 +6,14 @@ class BuildPopupDialogWrongEmailOrPwd extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(AppLocalizations.of(context)!.pageLoginPopupAuthTitle),
+      title: Text(AppLocalizations.of(context)!.pageLoginPopupAuthTitle,
+          key: const Key("Title wrong email or pwd")),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(AppLocalizations.of(context)!.pageLoginPopupAuthText),
+          Text(AppLocalizations.of(context)!.pageLoginPopupAuthText,
+              key: const Key("Body wrong email or pwd")),
         ],
       ),
       actions: <Widget>[
