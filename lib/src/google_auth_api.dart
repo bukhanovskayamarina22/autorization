@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../pages/home_page.dart';
 
-Future<AccessCredentials> GoogleAuthapi(BuildContext context) async {
+Future<AccessCredentials> GoogleAuthapi() async {
   final client = http.Client();
   try {
     return await obtainAccessCredentialsViaUserConsent(
@@ -18,7 +18,6 @@ Future<AccessCredentials> GoogleAuthapi(BuildContext context) async {
     );
   } finally {
     client.close();
-    Navigator.of(context).pushNamed(HomePage.tag);
   }
 }
 

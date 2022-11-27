@@ -105,8 +105,10 @@ class MyCustomFormState extends State<MyCustomForm> {
                   width: double.infinity,
                   color: Colors.transparent,
                   child: OutlinedButton(
-                    onPressed: () {
-                      signIn(context);
+                    onPressed: () async {
+                      if (await signIn()) {
+                        Navigator.of(context).pushNamed(HomePage.tag);
+                      }
                     },
                     child: Text(
                         AppLocalizations.of(context)!.pageLoginButtonGoogle),
