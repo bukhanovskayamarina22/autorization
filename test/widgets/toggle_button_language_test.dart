@@ -3,32 +3,10 @@ import 'package:autorization/provider/theme_provider.dart';
 import 'package:autorization/widgets/toggle_button_language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class MockThemeProvider extends Mock implements ThemeProvider {}
-
 void main() {
-  late MockThemeProvider mockThemeProvider;
-
-  setUp(() {
-    mockThemeProvider = MockThemeProvider();
-  });
-
-  final isSelectedFromProvider = [true, false, false];
-  final isSelected = isSelectedFromProvider;
-
-  void isSelectedReturns() {
-    when(() => mockThemeProvider.SelectThemeNow()).thenAnswer(
-      (_) {
-        return isSelectedFromProvider;
-      },
-    );
-  }
-
-  final List<String> themesText = ["System", "Dark", "Light"];
-
   Widget createWidgetUnderTest() {
     return MultiProvider(
         providers: [
@@ -41,7 +19,15 @@ void main() {
           LocaleProvider localeProvider = Provider.of<LocaleProvider>(context);
           return MaterialApp(
             key: Key('MaterialAppKey'),
-            home: const ToggleButtonLanguage(),
+            title: 'Kodeversitas',
+            debugShowCheckedModeBanner: false,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            locale: localeProvider.locale,
+            themeMode: themeProvider.themeMode,
+            theme: MyThemes.lightTheme,
+            darkTheme: MyThemes.darkTheme,
+            home: ToggleButtonLanguage(),
           );
         });
   }
@@ -60,10 +46,5 @@ void main() {
       final toggleButtonTheme = find.byType(Text);
       expect(toggleButtonTheme, findsNWidgets(3));
     });
-
-    //Проверить нажатие и изменения
-    /*testWidgets('Initial toggle state is reflected', (tester) async {
-      await tester.pumpWidget(createWidgetUnderTest());
-    });*/
   });
 }

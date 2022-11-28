@@ -1,5 +1,7 @@
 
+
 import 'package:autorization/src/encryption.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hive/hive.dart';
@@ -104,7 +106,7 @@ class MyCustomFormState extends State<MyCustomForm> {
               PasswordWidget(),
               SubmitButton(formKey: _formKey),
               ButtonSignUp(formKey: _formKey),
-              //Google 
+              //Google
               Padding(
                 padding: EdgeInsets.only(top: 70),
                 child: Container(
@@ -112,16 +114,19 @@ class MyCustomFormState extends State<MyCustomForm> {
                   color: Colors.transparent,
                   child: OutlinedButton(
                     onPressed: () async {
+
                       var googleUserLoginData = await signIn();
                       Encryption encryption = await Encryption();
                       Map mapUser = GoogleUser(responceBody: googleUserLoginData).toMap();
                       String encryptedUser = encryption.encrypt(googleUserLoginData);
                       String encryptedEmail = encryption.encrypt(mapUser['email']);
+
                       if (googleUserLoginData != false) {
                         DatabaseHelper databaseHelper = await DatabaseHelper();
                         
                         var getBox = await databaseHelper.openGoogleBox();
                         Box openBox = await databaseHelper.getGoogleBox();
+
                         if(await databaseHelper.emailExists(box: openBox, encryptedEmail: encryptedEmail) == false) {
                           await databaseHelper.addUser(box: openBox, encryptedUser: encryptedUser, encryptedEmail: encryptedEmail);
                         } 
@@ -129,6 +134,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                         MaterialPageRoute(
                           builder: (context) => HomePage(text: 'Hello, ${mapUser['email']}'),
                         ));                
+
                       }
                     },
                     child: Text(
@@ -219,6 +225,7 @@ class SubmitButton extends StatelessWidget {
             // Validate returns true if the form is valid, or false otherwise.
             if (_formKey.currentState!.validate()) {
               var user = await User(
+
                   email: emailController.text,
                   password: passwordController.text).toString();
               var mapUser = await User(
@@ -229,15 +236,18 @@ class SubmitButton extends StatelessWidget {
             String encryptedEmail = encryption.encrypt(emailController.text);
 
               if (await databaseHelper.emailExists(box: openBox, encryptedEmail: encryptedEmail) == false) {
+
                 showDialog(
                   context: context,
                   builder: (BuildContext context) => BuildPopupDialogNoUser(),
                 );
+
               } else if (await databaseHelper.userExists(box: openBox, encryptedUser: encryptedUser, encryptedEmail: encryptedEmail) != false) {
                   Navigator.push(context,
                     MaterialPageRoute(
                       builder: (context) => HomePage(text: 'Hello, ${mapUser['email']}'),
                     )); 
+
               } else {
                 showDialog(
                   context: context,
@@ -277,19 +287,6 @@ class ButtonSignUp extends StatelessWidget {
         width: 350,
         child: MaterialButton(
           onPressed: () async {
-
-            //           
-            //           
-            //           String encryptedUser = encryption.encrypt(googleUserLoginData);
-            //           String encryptedEmail = encryption.encrypt(mapUser['email']);
-            //           if (googleUserLoginData != false) {
-            //             DatabaseHelper databaseHelper = await DatabaseHelper();
-                        
-            //             var getBox = await databaseHelper.openGoogleBox();
-            //             Box openBox = await databaseHelper.getGoogleBox();
-            //             if(await databaseHelper.emailExists(box: openBox, encryptedEmail: encryptedEmail) == false) {
-            //               await databaseHelper.addUser(box: openBox, encryptedUser: encryptedUser, encryptedEmail: encryptedEmail);
-            //             } 
             var databaseHelper = await DatabaseHelper();
             var opendb = await databaseHelper.openUserBox();
             var openBox = await databaseHelper.getUserBox();
@@ -298,6 +295,7 @@ class ButtonSignUp extends StatelessWidget {
             print(_formKey.currentState);
             // Validate returns true if the form is valid, or false otherwise.
             if (_formKey.currentState!.validate()) {
+
               var stringUser = await User(
                 email: emailController.text,
                 password: passwordController.text).toString();
@@ -306,6 +304,7 @@ class ButtonSignUp extends StatelessWidget {
                 password: passwordController.text).toMap();
               String encryptedUser = encryption.encrypt(stringUser);
               String encryptedEmail = encryption.encrypt(emailController.text);
+
               var emailExists = await databaseHelper.emailExists(
                 box: openBox, encryptedEmail: encryptedEmail);
               if (emailExists != false) {
@@ -317,11 +316,13 @@ class ButtonSignUp extends StatelessWidget {
                 // ignore: use_build_context_synchronously
 
               } else {
+
                 databaseHelper.addUser(box: openBox, encryptedUser: encryptedUser, encryptedEmail: encryptedEmail);
                 Navigator.push(context,
                 MaterialPageRoute(
                   builder: (context) => HomePage(text: 'Hello, ${mapUser['email']}'),
                 )); 
+
               }
               // If the form is valid, display a snackbar. In the real world,
               // you'd often call a server or save the information in a database.
