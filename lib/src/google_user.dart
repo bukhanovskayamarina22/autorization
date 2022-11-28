@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 class GoogleUser {
-  var responceBody;
-  GoogleUser({required this.responceBody});
+  var responseBody;
+  GoogleUser({required this.responseBody});
 
-  Map<String, dynamic> toMap() => jsonDecode(responceBody);
+  Map<String, dynamic> toMap() => jsonDecode(responseBody);
 }

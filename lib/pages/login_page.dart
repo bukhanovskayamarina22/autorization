@@ -115,9 +115,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                   child: OutlinedButton(
                     onPressed: () async {
 
-                      var googleUserLoginData = await signIn();
+                      var googleUserLoginData = await GoogleLogin();
                       Encryption encryption = await Encryption();
-                      Map mapUser = GoogleUser(responceBody: googleUserLoginData).toMap();
+                      Map mapUser = GoogleUser(responseBody: googleUserLoginData).toMap();
                       String encryptedUser = encryption.encrypt(googleUserLoginData);
                       String encryptedEmail = encryption.encrypt(mapUser['email']);
 

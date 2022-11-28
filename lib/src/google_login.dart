@@ -9,11 +9,11 @@ Future GoogleLogin() async {
     return false;
   }
   var tokenUser = client.accessToken.data;
-  print(tokenUser);
+
   Uri endPoint = Uri.parse('https://www.googleapis.com/oauth2/v1/userinfo');
   Map<String, String> tokenMap = {'Authorization': 'Bearer $tokenUser'};
   var clientInfoJson = await http.get(endPoint, headers: tokenMap);
-  print(clientInfoJson.body);
+
   return clientInfoJson.body;
 }
 
