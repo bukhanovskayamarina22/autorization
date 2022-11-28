@@ -11,11 +11,11 @@ class DatabaseHelper {
   DatabaseHelper();
 
   Future openUserBox() async {
-    return await Hive.openBox<Map>('users');
+    return await Hive.openBox('users');
   }
 
   Future getUserBox() async {
-    return await Hive.box<Map>('users');
+    return await Hive.box('users');
   }
 
   Future openGoogleBox() async {
@@ -26,40 +26,37 @@ class DatabaseHelper {
     return await Hive.box('google-tokens');
   }
 
-  Future addUser({required Box box, required Map user}) async {
-    await box.put('${user['email']}', user);
+  Future addUser({required Box box,required String encryptedEmail, required String encryptedUser}) async {
+    await box.put(encryptedEmail, encryptedUser);
     return true;
   }
 
-  Future userExists({required Box box, required Map user}) async {
-    if (await box.get(user['email']).toString() == user.toString()) {
+  Future userExists({required Box box,required String encryptedEmail, required String encryptedUser}) async {
+    if (await box.get(encryptedEmail) == encryptedUser) {
       return true;
     }
     return false;
   }
 
-  Future emailExists({required Box box, required String email}) async {
-    if (await box.get(email) != null) {
+  Future emailExists({required Box box, required String encryptedEmail}) async {
+    if (await box.get(encryptedEmail) != null) {
       return true;
     } else {
       return false;
     }
   }
 
-  Future updateUserData({required Box box, required Map user, required String parameterToUpdate, required newParameterValue}) async {
-    if(await emailExists(box: box, email: user['email']) != false) {
-      if(user.containsKey(parameterToUpdate) != false) {
-        user[parameterToUpdate] = newParameterValue;
-        box.put(user['email'], user);
-        return 'value of $parameterToUpdate parameter now equals to $newParameterValue';
-      } return 'no such parameter';
-    }
-    return 'user does not exist';
+  Future updateUserData({required Box box, required String encryptedEmail, required String encryptedUpdatedUser}) async {
+    if(await emailExists(box: box, encryptedEmail: encryptedEmail) != false) {
+        box.put(encryptedEmail, encryptedUpdatedUser);
+        return 'updated';
+      }      
+    return 'user does not exist'; 
   }
 
-  Future deleteUser({required Box box, required String email}) async {
-    if (await emailExists(box: box, email: email) != false) {
-      box.delete(email);
+  Future deleteUser({required Box box, required String encryptedEmail}) async {
+    if(await emailExists(box: box, encryptedEmail: encryptedEmail) != false) {
+      box.delete(encryptedEmail);
       return 'deleted';
     }
     return 'no such user in the box';

@@ -5,66 +5,66 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() {
-  test('box "users" is opened because it already exists', () async {
-    await Hive.initFlutter();
-    var databaseHelper = await DatabaseHelper();
-    var openBox = await databaseHelper.openGoogleBox();
+  // test('box "users" is opened because it already exists', () async {
+  //   await Hive.initFlutter();
+  //   var databaseHelper = await DatabaseHelper();
+  //   var openBox = await databaseHelper.openGoogleBox();
 
-    var r = openBox.isOpen;
+  //   var r = openBox.isOpen;
 
-    expect(r, true);
-  });
+  //   expect(r, true);
+  // });
 
-  test('box "users" is not null', () async {
-    await Hive.initFlutter();
-    var databaseHelper = await DatabaseHelper();
-    var openBox = await databaseHelper.getGoogleBox();
+  // test('box "users" is not null', () async {
+  //   await Hive.initFlutter();
+  //   var databaseHelper = await DatabaseHelper();
+  //   var openBox = await databaseHelper.getGoogleBox();
 
-    var r = openBox.isOpen;
+  //   var r = openBox.isOpen;
 
-    expect(r, true);
-  });
+  //   expect(r, true);
+  // });
 
-  test('newly created box is empty', () async {
-    await Hive.initFlutter();
-    Box newBox = await Hive.openBox('name');
+  // test('newly created box is empty', () async {
+  //   await Hive.initFlutter();
+  //   Box newBox = await Hive.openBox('name');
 
-    var r = newBox.isEmpty;
+  //   var r = newBox.isEmpty;
 
-    expect(r, true);
-  });
+  //   expect(r, true);
+  // });
 
-  test('existing box is not empty', () async {
-    await Hive.initFlutter();
-    var databaseHelper = await DatabaseHelper();
-    Box opendb = await databaseHelper.openUserBox();
+  // test('existing box is not empty', () async {
+  //   await Hive.initFlutter();
+  //   var databaseHelper = await DatabaseHelper();
+  //   Box opendb = await databaseHelper.openUserBox();
 
-    var r = opendb.isNotEmpty;
+  //   var r = opendb.isNotEmpty;
 
-    expect(r, true);
-  });
+  //   expect(r, true);
+  // });
 
-  test('if email key is not in the box false returned', () async {
-    var user = User(email: 'asdf', password: 'asdf');
-    await Hive.initFlutter();
-    var databaseHelper = await DatabaseHelper();
-    var opendb = await databaseHelper.openUserBox();
-    Box openBox = await databaseHelper.getUserBox();
+  // test('if email key is not in the box false returned', () async {
+  //   var user = User(email: 'asdf', password: 'asdf');
+  //   await Hive.initFlutter();
+  //   var databaseHelper = await DatabaseHelper();
+  //   var opendb = await databaseHelper.openUserBox();
+  //   Box openBox = await databaseHelper.getUserBox();
 
-    var r = await databaseHelper.emailExists(box: openBox, email: user.email);
+  //   var r = await databaseHelper.emailExists(box: openBox, email: user.email);
 
-    expect(r, false);
-  });
+  //   expect(r, false);
+  // });
 
-  test('if email key is in the box true returned', () async {
-    var user = User(email: 'name@example.com', password: 'asdfasdf');
-    await Hive.initFlutter();
-    var databaseHelper = await DatabaseHelper();
-    var opendb = await databaseHelper.openUserBox();
-    Box openBox = await databaseHelper.getUserBox();
+  // test('if email key is in the box true returned', () async {
+  //   var user = User(email: 'name@example.com', password: 'asdfasdf');
+  //   await Hive.initFlutter();
+  //   var databaseHelper = await DatabaseHelper();
+  //   var opendb = await databaseHelper.openUserBox();
+  //   Box openBox = await databaseHelper.getUserBox();
 
-    var r = await databaseHelper.emailExists(box: openBox, email: user.email);
+  //   var r = await databaseHelper.emailExists(box: openBox, email: user.email);
 
-    expect(r, true);
-  });
+  //   expect(r, true);
+  // });
 }
