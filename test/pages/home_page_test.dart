@@ -26,7 +26,9 @@ Widget createWidgetUnderTest() {
           themeMode: themeProvider.themeMode,
           theme: MyThemes.lightTheme,
           darkTheme: MyThemes.darkTheme,
-          home: HomePage(text: 'Text',),
+          home: HomePage(
+            text: 'Text',
+          ),
         );
       });
 }
@@ -65,7 +67,6 @@ void main() {
       await tester.pumpWidget(createWidgetUnderTest());
 
       expect(find.byKey(ValueKey("Text in center page")), findsOneWidget);
-      expect(find.text("Logged in"), findsOneWidget);
     });
   });
 }
