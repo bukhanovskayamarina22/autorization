@@ -51,6 +51,25 @@ class MyCustomFormState extends State<MyCustomForm> {
   // not a GlobalKey<MyCustomFormState>.
   final _formKey = GlobalKey<FormState>();
 
+  Future openGoogleBox({required DatabaseHelper databaseHelper}) async {
+    var getBox = await databaseHelper.openGoogleBox();
+    Box openBox = await databaseHelper.getGoogleBox();
+    return openBox;
+  }
+
+  Future openUserBox({required DatabaseHelper databaseHelper}) async {
+    var opendb = await databaseHelper.openUserBox();
+    var openBox = await databaseHelper.getUserBox();
+    return openBox;
+  }
+
+  void openHomePage() {
+    Navigator.push(context,
+      MaterialPageRoute(
+        builder: (context) => HomePage(text: 'Hello, ${mapUser['email']}'),
+      ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -103,9 +122,136 @@ class MyCustomFormState extends State<MyCustomForm> {
                   },
                 ),
               ),
-              PasswordWidget(),
-              SubmitButton(formKey: _formKey),
-              ButtonSignUp(formKey: _formKey),
+              //Password
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: TextFormField(
+                  obscureText: true,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  controller: passwordController,
+                  decoration: InputDecoration(
+                    labelStyle: TextStyle(
+                      color: Theme.of(context).iconTheme.color,
+                    ),
+                    border: const OutlineInputBorder(),
+                    label: Text(AppLocalizations.of(context)!.pageLoginPassword),
+                    hintText: AppLocalizations.of(context)!.pageLoginPasswordHelp,
+                  ),
+                  // The validator receives the text that the user has entered.
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    if (value.length < 8) {
+                      return AppLocalizations.of(context)!.pageLoginPasswordError;
+                    }
+                  },
+                ),
+              ),
+              //Submit
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: SizedBox(
+                  width: 350,
+                  child: ElevatedButton(
+                    onPressed: () async {
+
+                      var databaseHelper = await DatabaseHelper();
+                      var box = await openUserBox(databaseHelper: databaseHelper);
+
+                      Encryption encryption = await Encryption();
+
+                      // Validate returns true if the form is valid, or false otherwise.
+                      if (_formKey.currentState!.validate()) {
+                        var user = await User(
+
+                            email: emailController.text,
+                            password: passwordController.text).toString();
+                        var mapUser = await User(
+                            email: emailController.text,
+                            password: passwordController.text).toMap();
+
+                      String encryptedUser = encryption.encrypt(user);
+                      String encryptedEmail = encryption.encrypt(emailController.text);
+
+                        if (await databaseHelper.emailExists(box: box, encryptedEmail: encryptedEmail) == false) {
+
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) => BuildPopupDialogNoUser(),
+                          );
+
+                        } else if (await databaseHelper.userExists(box: box, encryptedUser: encryptedUser, encryptedEmail: encryptedEmail) != false) {
+                            Navigator.push(context,
+                              MaterialPageRoute(
+                                builder: (context) => HomePage(text: 'Hello, ${mapUser['email']}'),
+                              )); 
+
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) =>
+                                BuildPopupDialogWrongEmailOrPwd(),
+                          );
+                        }
+                        // If the form is valid, display a snackbar. In the real world,
+                        // you'd often call a server or save the information in a database.
+                        // ignore: use_build_context_synchronously
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Processing Data')),
+                        );
+                      }
+                    },
+                    child: Text(AppLocalizations.of(context)!.pageLoginButtonLogin),
+                  ),
+                ),
+              ),
+              //Sign up
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: SizedBox(
+                  width: 350,
+                  child: MaterialButton(
+                    onPressed: () async {
+                      var databaseHelper = await DatabaseHelper();
+                      var box = await openUserBox(databaseHelper: databaseHelper);
+
+                      Encryption encryption = await Encryption();
+                      print(_formKey.currentState);
+                      // Validate returns true if the form is valid, or false otherwise.
+                      if (_formKey.currentState!.validate()) {
+                        var user = User(email: emailController.text,
+                          password: passwordController.text);
+
+                        var stringUser = await user.toString();
+                        var mapUser = await user.toMap();
+
+                        String encryptedUser = encryption.encrypt(stringUser);
+                        String encryptedEmail = encryption.encrypt(emailController.text);
+
+                        if (await databaseHelper.emailExists(box: box, encryptedEmail: encryptedEmail) != false) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) =>
+                                const BuildPopupDialogUserExists(),
+                          );
+
+                        } else {
+                          databaseHelper.addUser(box: box, encryptedUser: encryptedUser, encryptedEmail: encryptedEmail);
+                          openHomePage();
+                        }
+                        // If the form is valid, display a snackbar. In the real world,
+                        // you'd often call a server or save the information in a database.
+                        // ignore: use_build_context_synchronously
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Processing Data')),
+                        );
+                      }
+                    },
+                    child: Text(AppLocalizations.of(context)!.pageLoginButtonRegistr),
+                  ),
+                ),
+              ),
               //Google
               Padding(
                 padding: EdgeInsets.only(top: 70),
@@ -117,23 +263,20 @@ class MyCustomFormState extends State<MyCustomForm> {
 
                       var googleUserLoginData = await GoogleLogin();
                       Encryption encryption = await Encryption();
-                      Map mapUser = GoogleUser(responseBody: googleUserLoginData).toMap();
+                      var user = GoogleUser(responseBody: googleUserLoginData);
+                      Map mapUser = user.toMap();
                       String encryptedUser = encryption.encrypt(googleUserLoginData);
                       String encryptedEmail = encryption.encrypt(mapUser['email']);
 
                       if (googleUserLoginData != false) {
                         DatabaseHelper databaseHelper = await DatabaseHelper();
-                        
-                        var getBox = await databaseHelper.openGoogleBox();
-                        Box openBox = await databaseHelper.getGoogleBox();
 
-                        if(await databaseHelper.emailExists(box: openBox, encryptedEmail: encryptedEmail) == false) {
-                          await databaseHelper.addUser(box: openBox, encryptedUser: encryptedUser, encryptedEmail: encryptedEmail);
+                        var box = await openGoogleBox(databaseHelper: databaseHelper);
+
+                        if(await databaseHelper.emailExists(box: box, encryptedEmail: encryptedEmail) == false) {
+                          await databaseHelper.addUser(box: box, encryptedUser: encryptedUser, encryptedEmail: encryptedEmail);
                         } 
-                        Navigator.push(context,
-                        MaterialPageRoute(
-                          builder: (context) => HomePage(text: 'Hello, ${mapUser['email']}'),
-                        ));                
+                        openHomePage();                                
 
                       }
                     },
@@ -163,178 +306,43 @@ class MyCustomFormState extends State<MyCustomForm> {
   }
 }
 
-class PasswordWidget extends StatelessWidget {
-  const PasswordWidget({
-    Key? key,
-  }) : super(key: key);
+// class PasswordWidget extends StatelessWidget {
+//   const PasswordWidget({
+//     Key? key,
+//   }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: TextFormField(
-        obscureText: true,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        controller: passwordController,
-        decoration: InputDecoration(
-          labelStyle: TextStyle(
-            color: Theme.of(context).iconTheme.color,
-          ),
-          border: const OutlineInputBorder(),
-          label: Text(AppLocalizations.of(context)!.pageLoginPassword),
-          hintText: AppLocalizations.of(context)!.pageLoginPasswordHelp,
-        ),
-        // The validator receives the text that the user has entered.
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'Please enter some text';
-          }
-          if (value.length < 8) {
-            return AppLocalizations.of(context)!.pageLoginPasswordError;
-          }
-        },
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+    
+//   }
+// }
 
-class SubmitButton extends StatelessWidget {
-  const SubmitButton({
-    Key? key,
-    required GlobalKey<FormState> formKey,
-  })  : _formKey = formKey,
-        super(key: key);
+// class SubmitButton extends StatelessWidget {
+//   const SubmitButton({
+//     Key? key,
+//     required GlobalKey<FormState> formKey,
+//   })  : _formKey = formKey,
+//         super(key: key);
 
-  final GlobalKey<FormState> _formKey;
+//   final GlobalKey<FormState> _formKey;
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
-      child: SizedBox(
-        width: 350,
-        child: ElevatedButton(
-          onPressed: () async {
+//   @override
+//   Widget build(BuildContext context) {
+    
+//   }
+// }
 
-            var databaseHelper = await DatabaseHelper();
-            var opendb = await databaseHelper.openUserBox();
-            var openBox = await databaseHelper.getUserBox();
+// class ButtonSignUp extends StatelessWidget {
+//   const ButtonSignUp({
+//     Key? key,
+//     required GlobalKey<FormState> formKey,
+//   })  : _formKey = formKey,
+//         super(key: key);
 
-            Encryption encryption = await Encryption();
+//   final GlobalKey<FormState> _formKey;
 
-            // Validate returns true if the form is valid, or false otherwise.
-            if (_formKey.currentState!.validate()) {
-              var user = await User(
-
-                  email: emailController.text,
-                  password: passwordController.text).toString();
-              var mapUser = await User(
-                  email: emailController.text,
-                  password: passwordController.text).toMap();
-
-            String encryptedUser = encryption.encrypt(user);
-            String encryptedEmail = encryption.encrypt(emailController.text);
-
-              if (await databaseHelper.emailExists(box: openBox, encryptedEmail: encryptedEmail) == false) {
-
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) => BuildPopupDialogNoUser(),
-                );
-
-              } else if (await databaseHelper.userExists(box: openBox, encryptedUser: encryptedUser, encryptedEmail: encryptedEmail) != false) {
-                  Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) => HomePage(text: 'Hello, ${mapUser['email']}'),
-                    )); 
-
-              } else {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) =>
-                      BuildPopupDialogWrongEmailOrPwd(),
-                );
-              }
-              // If the form is valid, display a snackbar. In the real world,
-              // you'd often call a server or save the information in a database.
-              // ignore: use_build_context_synchronously
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Processing Data')),
-              );
-            }
-          },
-          child: Text(AppLocalizations.of(context)!.pageLoginButtonLogin),
-        ),
-      ),
-    );
-  }
-}
-
-class ButtonSignUp extends StatelessWidget {
-  const ButtonSignUp({
-    Key? key,
-    required GlobalKey<FormState> formKey,
-  })  : _formKey = formKey,
-        super(key: key);
-
-  final GlobalKey<FormState> _formKey;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: SizedBox(
-        width: 350,
-        child: MaterialButton(
-          onPressed: () async {
-            var databaseHelper = await DatabaseHelper();
-            var opendb = await databaseHelper.openUserBox();
-            var openBox = await databaseHelper.getUserBox();
-
-            Encryption encryption = await Encryption();
-            print(_formKey.currentState);
-            // Validate returns true if the form is valid, or false otherwise.
-            if (_formKey.currentState!.validate()) {
-
-              var stringUser = await User(
-                email: emailController.text,
-                password: passwordController.text).toString();
-              var mapUser = await User(
-                email: emailController.text,
-                password: passwordController.text).toMap();
-              String encryptedUser = encryption.encrypt(stringUser);
-              String encryptedEmail = encryption.encrypt(emailController.text);
-
-              var emailExists = await databaseHelper.emailExists(
-                box: openBox, encryptedEmail: encryptedEmail);
-              if (emailExists != false) {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) =>
-                      BuildPopupDialogUserExists(),
-                );
-                // ignore: use_build_context_synchronously
-
-              } else {
-
-                databaseHelper.addUser(box: openBox, encryptedUser: encryptedUser, encryptedEmail: encryptedEmail);
-                Navigator.push(context,
-                MaterialPageRoute(
-                  builder: (context) => HomePage(text: 'Hello, ${mapUser['email']}'),
-                )); 
-
-              }
-              // If the form is valid, display a snackbar. In the real world,
-              // you'd often call a server or save the information in a database.
-              // ignore: use_build_context_synchronously
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Processing Data')),
-              );
-            }
-          },
-          child: Text(AppLocalizations.of(context)!.pageLoginButtonRegistr),
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+    
+//   }
+// }

@@ -62,10 +62,11 @@ void main() {
       expect(settingsPage, findsOneWidget);
     });
     testWidgets("Body text has been rendered", (WidgetTester tester) async {
+      var userEmail = 'name@example.com';
       await tester.pumpWidget(createWidgetUnderTest());
 
       expect(find.byKey(ValueKey("Text in center page")), findsOneWidget);
-      expect(find.text("Logged in"), findsOneWidget);
+      expect(find.text("Hello, name@example"), findsOneWidget);
     });
   });
 }
