@@ -18,7 +18,6 @@ class _ToggleButtonLanguageState extends State<ToggleButtonLanguage> {
     final List<String> languageForLocale = locale.languageForLocale;
     final List<String> language = locale.language;
     List<bool> isSelected = locale.SelectLocale();
-    print(isSelected);
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
@@ -46,7 +45,6 @@ class _ToggleButtonLanguageState extends State<ToggleButtonLanguage> {
         ],
         onPressed: (int newIndex) {
           setState(() {
-            print(newIndex);
             final locale = Provider.of<LocaleProvider>(context, listen: false);
             for (int index = 0; index < isSelected.length; index++) {
               if (index == newIndex) {
