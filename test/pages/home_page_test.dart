@@ -26,7 +26,9 @@ Widget createWidgetUnderTest() {
           themeMode: themeProvider.themeMode,
           theme: MyThemes.lightTheme,
           darkTheme: MyThemes.darkTheme,
-          home: HomePage(text: 'Text',),
+          home: HomePage(
+            text: 'Text',
+          ),
         );
       });
 }
