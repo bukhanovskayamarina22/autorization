@@ -63,10 +63,10 @@ class MyCustomFormState extends State<MyCustomForm> {
     return openBox;
   }
 
-  void openHomePage() {
+  void openHomePage({required String email}) {
     Navigator.push(context,
       MaterialPageRoute(
-        builder: (context) => HomePage(text: 'Hello, ${mapUser['email']}'),
+        builder: (context) => HomePage(text: 'Hello, $email'),
       ));
   }
 
@@ -182,10 +182,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                           );
 
                         } else if (await databaseHelper.userExists(box: box, encryptedUser: encryptedUser, encryptedEmail: encryptedEmail) != false) {
-                            Navigator.push(context,
-                              MaterialPageRoute(
-                                builder: (context) => HomePage(text: 'Hello, ${mapUser['email']}'),
-                              )); 
+                          openHomePage(email: mapUser['email']);
 
                         } else {
                           showDialog(
@@ -238,7 +235,7 @@ class MyCustomFormState extends State<MyCustomForm> {
 
                         } else {
                           databaseHelper.addUser(box: box, encryptedUser: encryptedUser, encryptedEmail: encryptedEmail);
-                          openHomePage();
+                          openHomePage(email: '${mapUser['email']}');
                         }
                         // If the form is valid, display a snackbar. In the real world,
                         // you'd often call a server or save the information in a database.
@@ -276,7 +273,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                         if(await databaseHelper.emailExists(box: box, encryptedEmail: encryptedEmail) == false) {
                           await databaseHelper.addUser(box: box, encryptedUser: encryptedUser, encryptedEmail: encryptedEmail);
                         } 
-                        openHomePage();                                
+                        openHomePage(email: '${mapUser['email']}');                                
 
                       }
                     },
