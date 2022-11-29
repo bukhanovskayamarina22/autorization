@@ -1,12 +1,7 @@
 import 'package:autorization/main.dart';
-import 'package:autorization/pages/home_page.dart';
 import 'package:autorization/pages/login_page.dart';
-import 'package:autorization/provider/locale_provider.dart';
-import 'package:autorization/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   final routes = <String, WidgetBuilder>{
